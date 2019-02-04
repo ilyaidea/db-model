@@ -21,7 +21,7 @@ trait TAdListModelRelations
             'id',
             [
                 'alias' =>'AdModel',
-                'foreinKey' =>
+                'foreignKey' =>
                     [
                         'message' =>'The ad_id does not exist on the Ad model'
                     ]

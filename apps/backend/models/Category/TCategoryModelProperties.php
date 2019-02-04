@@ -15,6 +15,7 @@ trait TCategoryModelProperties
     private $parent_id;
     private $title;
     private $description;
+    private $position;
 
     /**
      * @return mixed
@@ -79,4 +80,21 @@ trait TCategoryModelProperties
     {
         $this->description = $description;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param mixed $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+    }
+
 }

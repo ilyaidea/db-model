@@ -9,13 +9,24 @@
 namespace Ad\Backend\Models\Ad;
 
 
+
+use Ad\Backend\Models\AdList\AdListModel;
+use Ad\Backend\Models\Category\CategoryModel;
+use Ad\Backend\Models\Users\UsersModel;
 use Phalcon\Mvc\Model;
 
 class AdModel extends Model
 {
+    use TAdModelProperties;
+    use TAdModelValidation;
+    use TAdModelRelations;
+    use TAdModelEvents;
+
     public function initialize()
     {
         $this->setSource('ilya_ad');
+
+
     }
 
 }

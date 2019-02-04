@@ -9,7 +9,6 @@
 namespace Ad\Backend\Models\AdList ;
 
 
-use Ad\Backend\Models\Ad\AdModel;
 use Phalcon\Mvc\Model;
 
 class AdListModel extends Model

@@ -76,7 +76,7 @@ trait TAdListModelValidation
             'title',
             new StringLength(
                 [
-                    'min' => 5,
+                    'min' => 3,
                     'max' => 50,
                     'messageMaximum' => ':field length is too long',
                     'messageMinimum' => ':field length is too short',
@@ -92,12 +92,63 @@ trait TAdListModelValidation
                 ]
             )
         );
+
         $this->validator->setFilters('title','striptags');
     }
-    private function validationDescription(){}
-    private function validationCreated(){}
+    private function validationDescription()
+    {
+        $this->validator->add(
+            'description',
+            new PresenceOf(
+                [
+                    'message' => 'the :field is required'
+                ]
+            )
+        );
+        $this->validator->add(
+            'description',
+            new StringLength(
+                [
+                    'min' => 12,
+                    'max' => 800,
+                    'messageMaximum' => ':field length is too long',
+                    'messageMinimum' => ':field length is too short',
+                    'cancelOnFail' => true
+                ]
+            )
+        );
+        $this->validator->setFilters('description','striptags');
+    }
+    private function validationCreated()
+    {
+        $this->validator->add(
+            'created',
+            new PresenceOf(
+                [
+                    'message' => 'the :field is required'
+                ]
+            )
+        );
+    }
     private function validationStatus()
     {
+        $this->validator->add(
+            'status',
+            new PresenceOf(
+                [
+                    'message' => 'the :field is required'
+                ]
+            )
+        );
+        $this->validator->add(
+            'status',
+            new InclusionIn(
+                [
+                    'domain'  => [ 'active' , 'inactive'],
+                    'message' => 'the :field is not in valid domain'
+                ]
+            )
+        );
 
     }
 

@@ -31,6 +31,8 @@ trait TCategoryModelValidation
 
         $this->validationDescription();
 
+        $this->validationPosition();
+
         return $this->validate($this->validator);
 
     }
@@ -105,11 +107,27 @@ trait TCategoryModelValidation
                     'max' => 100,
                     'messageMaximum' => ':field length is too long',
                     'messageMinimum' => ':field length is too short',
+                    'allowEmpty' => true,
                     'cancelOnFail' => true
                 ]
             )
         );
         $this->validator->setFilters('description','striptags');
+    }
+
+    private function validationPosition()
+    {
+        $this->validator->add(
+            'position',
+            new Numericality(
+                [
+                    'message' => ':field must be numerical',
+                    'allowEmpty' => true,
+                    'cancelOnFail' => true
+                ]
+            )
+        );
+
     }
 
 }

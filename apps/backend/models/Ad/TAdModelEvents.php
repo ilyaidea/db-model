@@ -6,7 +6,7 @@
  * Time: 9:49 AM
  */
 
-namespace Ad\Backend\Models\Category;
+namespace  Ad\Backend\Models\Ad;
 
 
 trait TAdModelEvents
