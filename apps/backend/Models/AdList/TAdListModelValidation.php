@@ -88,7 +88,8 @@ trait TAdListModelValidation
             'title',
             new PresenceOf(
                 [
-                    'message' => 'the :field is required'
+                    'message' => 'the :field is required',
+                    'cancelOnFail' => true
                 ]
             )
         );
@@ -101,22 +102,23 @@ trait TAdListModelValidation
             'description',
             new PresenceOf(
                 [
-                    'message' => 'the :field is required'
-                ]
-            )
-        );
-        $this->validator->add(
-            'description',
-            new StringLength(
-                [
-                    'min' => 12,
-                    'max' => 800,
-                    'messageMaximum' => ':field length is too long',
-                    'messageMinimum' => ':field length is too short',
+                    'message' => 'the :field is required',
                     'cancelOnFail' => true
                 ]
             )
         );
+//        $this->validator->add(
+//            'description',
+//            new StringLength(
+//                [
+//                    'min' => 12,
+//                    'max' => 800,
+//                    'messageMaximum' => ':field length is too long',
+//                    'messageMinimum' => ':field length is too short',
+//                    'cancelOnFail' => true
+//                ]
+//            )
+//        );
         $this->validator->setFilters('description','striptags');
     }
     private function validationCreated()
@@ -125,7 +127,8 @@ trait TAdListModelValidation
             'created',
             new PresenceOf(
                 [
-                    'message' => 'the :field is required'
+                    'message' => 'the :field is required',
+                    'cancelOnFail' => true
                 ]
             )
         );
@@ -136,7 +139,8 @@ trait TAdListModelValidation
             'status',
             new PresenceOf(
                 [
-                    'message' => 'the :field is required'
+                    'message' => 'the :field is required',
+                    'cancelOnFail' => true
                 ]
             )
         );
@@ -145,7 +149,8 @@ trait TAdListModelValidation
             new InclusionIn(
                 [
                     'domain'  => [ 'active' , 'inactive'],
-                    'message' => 'the :field is not in valid domain'
+                    'message' => 'the :field is not in valid domain',
+                    'cancelOnFail' => true
                 ]
             )
         );

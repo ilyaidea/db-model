@@ -11,5 +11,10 @@ namespace  Ad\Backend\Models\Ad;
 
 trait TAdModelEvents
 {
+    public function beforeValidation()
+    {
+        $this->setCreated(date('Y-m-d H:i:s'));
+
+    }
 
 }

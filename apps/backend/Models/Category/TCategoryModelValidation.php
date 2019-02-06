@@ -15,6 +15,7 @@ use Phalcon\Validation\Validator\InclusionIn ;
 use Phalcon\Validation\Validator\PresenceOf ;
 use Phalcon\Validation\Validator\Uniqueness ;
 use Phalcon\Validation\Validator\StringLength ;
+use Phalcon\Validation\Validator\ExclusionIn ;
 
 trait TCategoryModelValidation
 {
@@ -59,6 +60,23 @@ trait TCategoryModelValidation
                 ]
             )
         );
+        if ($this->isUpdateMode())
+        {
+            $this->validator->add(
+                'parent_id',
+                new ExclusionIn(
+                    [
+                        'domain' =>[ $this->getId()],
+                        'message' => 'can not set parent_id whit it\'s Id',
+                        'allowEmpty' => true,
+                        'cancelOnFail' => true
+
+                    ]
+                )
+            );
+        }
+
+
     }
 
     private function validationTitle()
