@@ -2,6 +2,7 @@
 
 namespace Ad\Backend;
 
+use Ad\Backend\Lib\Tag;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Loader;
 use Phalcon\Mvc\View;
@@ -49,17 +50,50 @@ class Module implements ModuleDefinitionInterface
         });
 
         // Registering the view component
-        $di->set('view', function () {
+        $di->set('view', function(){
             $view = new View();
-            $view->setViewsDir('../apps/backend/views/');
+            $view->setViewsDir(__DIR__.'/views/');
+            $view->setPartialsDir(__DIR__.'/views/partials/');
 
-            $view->registerEngines(
-                [
-                    ".volt" => Volt::class,
-                ]
-            );
+            $view->registerEngines(array(
+                '.volt' => function($view, $di) {
+                    $volt = new Volt($view, $di);
+                    $compiler = $volt->getCompiler();
+
+                    $compiler->addFunction('get_class', 'get_class');
+                    $compiler->addFunction('strrpos', 'strrpos');
+                    $compiler->addFunction('substr', 'substr');
+                    $compiler->addFunction('array_push', 'array_push');
+
+
+
+                    $volt->setOptions(array(
+                        'compiledPath' => dirname(__DIR__).'/data/volt/',
+                        'stat' => true,
+                        'compileAlways' => true
+                    ));
+                    return $volt;
+                }
+            ));
+
             return $view;
         });
+        $di->set('tag', function()
+        {
+            return new Tag();
+        });
+//        $di->set('view', function () {
+//            $view = new View();
+//            $view->registerEngines(
+//                [
+//                    ".volt" => Volt::class,
+//                ]
+//            );
+//            $view->setViewsDir(__DIR__.'/views/');
+//            $view->setPartialsDir(__DIR__.'/views/partials/');
+//
+//            return $view;
+//        });
 
         // Set a different connection in each module
         date_default_timezone_set('Asia/Tehran');
