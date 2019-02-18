@@ -9,7 +9,7 @@
 namespace Ad\Backend\Models\Users;
 
 
-trait TUsersModelRelations
+trait TModelUsersRelations
 {
 
 }

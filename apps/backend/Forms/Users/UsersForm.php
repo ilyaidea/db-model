@@ -8,7 +8,7 @@
 
 namespace Ad\Backend\Forms\Users ;
 
-use Ad\Backend\Models\Users\UsersModel;
+use Ad\Backend\Models\Users\ModelUsers;
 use Phalcon\Forms\Element\Password;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Forms\Element\Hidden;
@@ -49,7 +49,7 @@ class UsersForm extends Form
             ],
             new Uniqueness(
                 [
-                    'model' => new UsersModel(),
+                    'model' => new ModelUsers(),
                     'message' => 'the :field must be unique'
                 ]
             )
@@ -78,7 +78,7 @@ class UsersForm extends Form
                 ),
                 new Uniqueness(
                     [
-                        'model' => new UsersModel(),
+                        'model' => new ModelUsers(),
                         'message' => 'the :field must be unique',
                     ]
                 )
@@ -103,7 +103,7 @@ class UsersForm extends Form
             [
                 new Uniqueness(
                     [
-                        'model' => new UsersModel(),
+                        'model' => new ModelUsers(),
                         'message' => 'the :field must be unique',
                     ]
                 ),

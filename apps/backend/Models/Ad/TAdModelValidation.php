@@ -10,7 +10,7 @@ namespace  Ad\Backend\Models\Ad;
 
 
 use Ad\Backend\Models\Category\CategoryModel;
-use Ad\Backend\Models\Users\UsersModel;
+use Ad\Backend\Models\Users\ModelUsers;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Numericality;
@@ -49,7 +49,7 @@ trait TAdModelValidation
             'user_id',
             new InclusionIn(
                 [
-                    'domain' => array_column(UsersModel::find()->toArray(),'id','id'),
+                    'domain' => array_column(ModelUsers::find()->toArray(),'id','id'),
                     'message' => 'this parent does not exist',
                     'cancelOnFail' => true
                 ]

@@ -4,11 +4,12 @@ namespace Ad\Backend\Models\Users ;
 
 use Phalcon\Mvc\Model ;
 
-class UsersModel extends Model
+class ModelUsers extends Model
 {
-    use TUsersModelProperties;
-    use TUsersModelRelations;
-    use TUsersModelValidations;
+    use TModelUsersProperties;
+    use TModelUsersRelations;
+    use TModelUsersValidations;
+    use TModelUsersEvents;
 
     public function initialize()
     {

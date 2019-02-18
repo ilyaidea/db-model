@@ -2,7 +2,7 @@
 
 namespace Ad\Backend\Models\Users ;
 
-trait TUsersModelProperties
+trait TModelUsersProperties
 {
     private $id;
     private $username;
