@@ -7,6 +7,8 @@ use Phalcon\Mvc\Model ;
 class UsersModel extends Model
 {
     use TUsersModelProperties;
+    use TUsersModelRelations;
+    use TUsersModelValidations;
 
     public function initialize()
     {
