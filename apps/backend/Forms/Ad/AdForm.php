@@ -9,7 +9,7 @@
 namespace Ad\Backend\Forms\Ad ;
 
 use Ad\Backend\Models\Category\CategoryModel;
-use Ad\Backend\Models\Users\UsersModel;
+use Ad\Backend\Models\Users\ModelUsers;
 use Phalcon\Forms\Element\Hidden;
 use Phalcon\Forms\Element\Select;
 use Phalcon\Forms\Element\Submit;
@@ -30,7 +30,7 @@ class AdForm extends \Phalcon\Forms\Form
     {
        $user_id =  new Select(
            'user_id',
-           array_column(UsersModel::find()->toArray(),'name',"id"));
+           array_column(ModelUsers::find()->toArray(),'name',"id"));
 
        $user_id->setLabel('press user id');
        $user_id->setAttributes([

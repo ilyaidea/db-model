@@ -1,11 +1,19 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Webhouse
+ * Date: 2/18/2019
+ * Time: 9:46 AM
+ */
 
-namespace Ad\Backend\Models\Users ;
+namespace Ad\Backend\Models\Widget\WidgetPlaces;
 
-trait TUsersModelProperties
+
+trait TModelWidgetPlacesProperties
 {
     private $id;
     private $name;
+    private $value;
 
     /**
      * @return mixed
@@ -38,6 +46,23 @@ trait TUsersModelProperties
     {
         $this->name = $name;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+    }
+
 
 
 }

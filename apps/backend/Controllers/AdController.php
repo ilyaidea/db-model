@@ -11,7 +11,7 @@ namespace Ad\Backend\Controllers;
 
 use Ad\Backend\Forms\Ad\AdForm;
 use Ad\Backend\Models\Ad\AdModel;
-use Ad\Backend\Models\Users\UsersModel;
+use Ad\Backend\Models\Users\ModelUsers;
 use Phalcon\Mvc\Controller;
 
 class AdController extends Controller

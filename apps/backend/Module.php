@@ -58,6 +58,13 @@ class Module implements ModuleDefinitionInterface
             $view->registerEngines(array(
                 '.volt' => function($view, $di) {
                     $volt = new Volt($view, $di);
+
+                    $volt->setOptions(array(
+                        'compiledPath' => dirname(__DIR__).'/data/volt/',
+                        'stat' => true,
+                        'compileAlways' => true
+                    ));
+
                     $compiler = $volt->getCompiler();
 
                     $compiler->addFunction('get_class', 'get_class');
@@ -65,13 +72,6 @@ class Module implements ModuleDefinitionInterface
                     $compiler->addFunction('substr', 'substr');
                     $compiler->addFunction('array_push', 'array_push');
 
-
-
-                    $volt->setOptions(array(
-                        'compiledPath' => dirname(__DIR__).'/data/volt/',
-                        'stat' => true,
-                        'compileAlways' => true
-                    ));
                     return $volt;
                 }
             ));
@@ -82,18 +82,6 @@ class Module implements ModuleDefinitionInterface
         {
             return new Tag();
         });
-//        $di->set('view', function () {
-//            $view = new View();
-//            $view->registerEngines(
-//                [
-//                    ".volt" => Volt::class,
-//                ]
-//            );
-//            $view->setViewsDir(__DIR__.'/views/');
-//            $view->setPartialsDir(__DIR__.'/views/partials/');
-//
-//            return $view;
-//        });
 
         // Set a different connection in each module
         date_default_timezone_set('Asia/Tehran');

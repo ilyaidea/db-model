@@ -12,7 +12,7 @@ namespace Ad\Backend\Models\Ad;
 
 use Ad\Backend\Models\AdList\AdListModel;
 use Ad\Backend\Models\Category\CategoryModel;
-use Ad\Backend\Models\Users\UsersModel;
+use Ad\Backend\Models\Users\ModelUsers;
 use Phalcon\Mvc\Model;
 
 class AdModel extends Model

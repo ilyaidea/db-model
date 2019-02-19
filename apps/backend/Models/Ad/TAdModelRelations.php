@@ -5,7 +5,7 @@ namespace  Ad\Backend\Models\Ad;
 
 use Ad\Backend\Models\AdList\AdListModel;
 use Ad\Backend\Models\Category\CategoryModel;
-use Ad\Backend\Models\Users\UsersModel;
+use Ad\Backend\Models\Users\ModelUsers;
 
 trait TAdModelRelations
 {
@@ -13,7 +13,7 @@ trait TAdModelRelations
     {
         $this->belongsTo(
             'user_id',
-            UsersModel::class,
+            ModelUsers::class,
             'id',
             [
                 'alias' =>'user',
