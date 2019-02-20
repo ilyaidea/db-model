@@ -19,6 +19,8 @@ trait TModelWidgetsProperties
     private $position;
     private $display;
     private $width;
+    private $created;
+    private $modified;
 
     /**
      * @return mixed
@@ -147,6 +149,39 @@ trait TModelWidgetsProperties
     {
         $this->width = $width;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param mixed $created
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getModified()
+    {
+        return $this->modified;
+    }
+
+    /**
+     * @param mixed $modified
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+    }
+
 
 
 }

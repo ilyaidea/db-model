@@ -51,13 +51,14 @@ class UsersController extends Controller
     public function addAction()
     {
         $w = new ModelWidgets();
-        $w->setName('test');
+        $w->setName('posssss');
         $w->setPlace('bb');
-        $w->setPosition(1);
+        $w->setPosition(3);
         $w->setRouteName('route');
         $w->setNamespace('name space');
         $w->setDisplay('block');
-        $w->setWidth("33.6px");
+        $w->setWidth("33.64px");
+
         if (!$w->save())
         {
             foreach ($w->getMessages() as $message)
@@ -65,7 +66,8 @@ class UsersController extends Controller
         }
         else
         {
-            die(print_r($_POST));
+            $w->sortByPosition();
+            echo 'saved';
         }
 
 

@@ -152,7 +152,8 @@ trait TModelWidgetsValidations
             new PresenceOf(
                 [
                     'message' => 'The :field is required',
-                    'cancelOnFail' => true
+                    'cancelOnFail' => true,
+                    'allowEmpty' => true
                 ]
             )
         );
@@ -160,7 +161,9 @@ trait TModelWidgetsValidations
             'position',
             new Numericality(
                 [
-                    'message' => ':field is not numeric'
+                    'message' => ':field is not numeric',
+                    'allowEmpty' => true,
+                    'cancelOnFail' => true,
                 ]
             )
         );
@@ -173,7 +176,8 @@ trait TModelWidgetsValidations
             new PresenceOf(
                 [
                     'message' => 'The :field is required',
-                    'cancelOnFail' => true
+                    'cancelOnFail' => true,
+                    'allowEmpty' => true
                 ]
             )
         );
@@ -249,7 +253,7 @@ trait TModelWidgetsValidations
             )
             );
 
-//        $this->validator->setFilters('width',['trim','striptags']);
+        $this->validator->setFilters('width',['trim','striptags']);
 
     }
 
