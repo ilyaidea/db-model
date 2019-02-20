@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Webhouse
- * Date: 2/18/2019
- * Time: 8:54 AM
- */
 
 namespace Ad\Backend\Models\Widget\Widgets;
 
@@ -15,6 +9,7 @@ use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\InclusionIn;
 use Phalcon\Validation\Validator\StringLength;
 use Phalcon\Validation\Validator\Numericality;
+
 
 trait TModelWidgetsValidations
 {
@@ -202,7 +197,8 @@ trait TModelWidgetsValidations
             new PresenceOf(
                 [
                     'message' => 'The :field is required',
-                    'cancelOnFail' => true
+                    'cancelOnFail' => true,
+                    'allowEmpty' => true
                 ]
             )
         );
@@ -216,7 +212,44 @@ trait TModelWidgetsValidations
                 ]
             )
         );
-        $this->validator->setFilters('width',['trim','striptags','alphanum']);
+        $this->validator->add(
+            'width',
+            new Validation\Validator\Callback(
+                [
+                    'message' => 'the inputted :field is not correct format',
+                    'callback'=> function($data)
+                    {
+                        $ext = ['em', 'vh', 'rem', 'px', 'vm', 'fr'];
+
+                        $pattern = "/^(([+-]?)([0-9]*?\.?[0-9]+))(em|px|vh|fr|rem)$/";
+
+                        $array = preg_split($pattern, $data->getWidth(), -1, PREG_SPLIT_DELIM_CAPTURE );
+                        if (count($array) < 4 )
+                        {
+                            return false;
+
+                        }
+                        if (!is_numeric($array[3]))
+                        {
+                            return false;
+
+                        }
+                        //the suffix must be in array
+                        if (!in_array($array[4], $ext))
+                        {
+                            return false;
+                        }
+
+                        return true;
+
+                    },
+                     'cancelOnFail' => true,
+                    'allowEmpty' => true
+                ]
+            )
+            );
+
+//        $this->validator->setFilters('width',['trim','striptags']);
 
     }
 

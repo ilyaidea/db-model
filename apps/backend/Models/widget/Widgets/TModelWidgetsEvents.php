@@ -9,7 +9,13 @@
 namespace Ad\Backend\Models\Widget\Widgets;
 
 
+
 trait TModelWidgetsEvents
 {
+    public function beforeCreate()
+    {
+//        print_r($this->re);
+
+    }
 
 }
