@@ -9,6 +9,7 @@ use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\InclusionIn;
 use Phalcon\Validation\Validator\StringLength;
 use Phalcon\Validation\Validator\Numericality;
+use Phalcon\Validation\Validator\Callback;
 
 
 trait TModelWidgetsValidations
@@ -185,13 +186,15 @@ trait TModelWidgetsValidations
             'display',
             new InclusionIn(
                 [
-                    'message' => '',
+                    'message' => 'the :field is not correct',
                     'domain' => ['block','inline'],
                     'cancelOnFail' => true,
                     'allowEmpty' => true,
                 ]
             )
         );
+
+        $this->validator->setFilters('display',['trim','striptags']);
 
     }
     private function validationWidth()
@@ -218,7 +221,7 @@ trait TModelWidgetsValidations
         );
         $this->validator->add(
             'width',
-            new Validation\Validator\Callback(
+            new Callback(
                 [
                     'message' => 'the inputted :field is not correct format',
                     'callback'=> function($data)
@@ -247,7 +250,7 @@ trait TModelWidgetsValidations
                         return true;
 
                     },
-                     'cancelOnFail' => true,
+                    'cancelOnFail' => true,
                     'allowEmpty' => true
                 ]
             )

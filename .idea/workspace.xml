@@ -2,19 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fa6b7fb-c60c-47f8-a823-940a4c36793e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/apps/backend/Models/Widget/BaseModel.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/apps/backend/Controllers/WidgetsController.php" />
       <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/apps/backend/Models/widget/WidgetPlaces/ModelWidgetPlaces.php" afterPath="$PROJECT_DIR$/apps/backend/Models/Widget/WidgetPlaces/ModelWidgetPlaces.php" />
-      <change beforePath="$PROJECT_DIR$/apps/backend/Models/widget/WidgetPlaces/TModelWidgetPlacesEvents.php" afterPath="$PROJECT_DIR$/apps/backend/Models/Widget/WidgetPlaces/TModelWidgetPlacesEvents.php" />
-      <change beforePath="$PROJECT_DIR$/apps/backend/Models/widget/WidgetPlaces/TModelWidgetPlacesProperties.php" afterPath="$PROJECT_DIR$/apps/backend/Models/Widget/WidgetPlaces/TModelWidgetPlacesProperties.php" />
-      <change beforePath="$PROJECT_DIR$/apps/backend/Models/widget/WidgetPlaces/TModelWidgetPlacesRelations.php" afterPath="$PROJECT_DIR$/apps/backend/Models/Widget/WidgetPlaces/TModelWidgetPlacesRelations.php" />
-      <change beforePath="$PROJECT_DIR$/apps/backend/Models/widget/WidgetPlaces/TModelWidgetPlacesValidations.php" afterPath="$PROJECT_DIR$/apps/backend/Models/Widget/WidgetPlaces/TModelWidgetPlacesValidations.php" />
-      <change beforePath="$PROJECT_DIR$/apps/backend/Models/widget/Widgets/ModelWidgets.php" afterPath="$PROJECT_DIR$/apps/backend/Models/Widget/Widgets/ModelWidgets.php" />
-      <change beforePath="$PROJECT_DIR$/apps/backend/Models/widget/Widgets/TModelWidgetsEvents.php" afterPath="$PROJECT_DIR$/apps/backend/Models/Widget/Widgets/TModelWidgetsEvents.php" />
-      <change beforePath="$PROJECT_DIR$/apps/backend/Models/widget/Widgets/TModelWidgetsProperties.php" afterPath="$PROJECT_DIR$/apps/backend/Models/Widget/Widgets/TModelWidgetsProperties.php" />
-      <change beforePath="$PROJECT_DIR$/apps/backend/Models/widget/Widgets/TModelWidgetsRelations.php" afterPath="$PROJECT_DIR$/apps/backend/Models/Widget/Widgets/TModelWidgetsRelations.php" />
-      <change beforePath="$PROJECT_DIR$/apps/backend/Models/widget/Widgets/TModelWidgetsValidations.php" afterPath="$PROJECT_DIR$/apps/backend/Models/Widget/Widgets/TModelWidgetsValidations.php" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Controllers/AdController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Controllers/CategoryController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Controllers/UsersController.php" afterPath="$PROJECT_DIR$/apps/backend/Controllers/UsersController.php" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Forms/Ad/AdForm.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Forms/AdList/AdListForm.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Forms/Category/CategoryForm.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/Ad/AdModel.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/Ad/TAdModelEvents.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/Ad/TAdModelProperties.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/Ad/TAdModelRelations.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/Ad/TAdModelValidation.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/AdList/AdListModel.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/AdList/TAdListModelEvents.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/AdList/TAdListModelProperties.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/AdList/TAdListModelRelations.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/AdList/TAdListModelValidation.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/Category/CategoryModel.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/Category/TCategoryModelEvents.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/Category/TCategoryModelProperties.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/Category/TCategoryModelRelations.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/Category/TCategoryModelValidation.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/Users/TModelUsersValidations.php" afterPath="$PROJECT_DIR$/apps/backend/Models/Users/TModelUsersValidations.php" />
+      <change beforePath="$PROJECT_DIR$/apps/backend/Models/Widget/Widgets/TModelWidgetsValidations.php" afterPath="$PROJECT_DIR$/apps/backend/Models/Widget/Widgets/TModelWidgetsValidations.php" />
+      <change beforePath="$PROJECT_DIR$/apps/frontend/Module.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/frontend/controllers/IndexController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/frontend/controllers/ProductsController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/frontend/controllers/UsersController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/frontend/models/Products.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/frontend/views/index/index.phtml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apps/frontend/views/products/index.phtml" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,21 +45,72 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="ModelWidgets.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/apps/backend/Models/Widget/Widgets/ModelWidgets.php">
+      <file leaf-file-name="TModelUsersValidations.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/apps/backend/Models/Users/TModelUsersValidations.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-291">
-              <caret line="40" column="54" lean-forward="true" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="54" />
+            <state relative-caret-position="204">
+              <caret line="177" column="1" lean-forward="true" selection-start-line="177" selection-start-column="1" selection-end-line="177" selection-end-column="1" />
+              <folding>
+                <element signature="e#285#4705#0#PHP" expanded="false" />
+                <element signature="e#383#667#0#PHP" expanded="false" />
+                <element signature="e#672#2025#0#PHP" expanded="false" />
+                <element signature="e#724#960#0#PHP" expanded="false" />
+                <element signature="e#815#936#1#PHP" expanded="false" />
+                <element signature="e#971#1354#0#PHP" expanded="false" />
+                <element signature="e#1064#1330#1#PHP" expanded="false" />
+                <element signature="e#1365#1650#0#PHP" expanded="false" />
+                <element signature="e#1456#1626#1#PHP" expanded="false" />
+                <element signature="e#1661#1957#0#PHP" expanded="false" />
+                <element signature="e#1747#1933#1#PHP" expanded="false" />
+                <element signature="e#2030#3118#0#PHP" expanded="false" />
+                <element signature="e#2079#2501#0#PHP" expanded="false" />
+                <element signature="e#2169#2477#1#PHP" expanded="false" />
+                <element signature="e#2512#2837#0#PHP" expanded="false" />
+                <element signature="e#2600#2813#1#PHP" expanded="false" />
+                <element signature="e#2848#3033#0#PHP" expanded="false" />
+                <element signature="e#2931#3009#1#PHP" expanded="false" />
+                <element signature="e#3123#4243#0#PHP" expanded="false" />
+                <element signature="e#3173#3494#0#PHP" expanded="false" />
+                <element signature="e#3264#3470#1#PHP" expanded="false" />
+                <element signature="e#3505#3831#0#PHP" expanded="false" />
+                <element signature="e#3594#3807#1#PHP" expanded="false" />
+                <element signature="e#3842#4180#0#PHP" expanded="false" />
+                <element signature="e#3926#4156#1#PHP" expanded="false" />
+                <element signature="e#4248#4702#0#PHP" expanded="false" />
+                <element signature="e#4300#4624#0#PHP" expanded="false" />
+                <element signature="e#4393#4600#1#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsersController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/backend/Controllers/UsersController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="91">
+              <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+              <folding>
+                <element signature="e#41#80#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ModelUsers.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/backend/Models/Users/ModelUsers.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseModel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/backend/Models/Widget/BaseModel.php">
+      <file leaf-file-name="TModelUsersProperties.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/backend/Models/Users/TModelUsersProperties.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+            <state relative-caret-position="238">
+              <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -76,8 +147,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/apps/backend/views/partials/head/title.volt" />
-        <option value="$PROJECT_DIR$/apps/backend/views/partials/form/form-title.volt" />
         <option value="$PROJECT_DIR$/apps/backend/views/partials/form/alerts/warning.volt" />
         <option value="$PROJECT_DIR$/apps/backend/views/partials/form/alerts/success.volt" />
         <option value="$PROJECT_DIR$/apps/backend/views/partials/form/alerts/notice.volt" />
@@ -116,17 +185,19 @@
         <option value="$PROJECT_DIR$/apps/backend/Models/widget/Widgets/TModelWidgetsRelations.php" />
         <option value="$PROJECT_DIR$/apps/backend/Models/widget/WidgetPlaces/TModelWidgetPlacesRelations.php" />
         <option value="$PROJECT_DIR$/apps/backend/Models/widget/WidgetPlaces/TModelWidgetPlacesValidations.php" />
-        <option value="$PROJECT_DIR$/apps/backend/Models/Users/TModelUsersValidations.php" />
         <option value="$PROJECT_DIR$/apps/backend/Models/Users/ModelUsers.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/apps/backend/Models/widget/Widgets/ModelWidgets.php" />
         <option value="$PROJECT_DIR$/apps/backend/Models/widget/Widgets/TModelWidgetsEvents.php" />
         <option value="$PROJECT_DIR$/apps/backend/Models/widget/Widgets/TModelWidgetsValidations.php" />
-        <option value="$PROJECT_DIR$/apps/backend/Controllers/UsersController.php" />
         <option value="$PROJECT_DIR$/apps/backend/Models/BaseModel.php" />
         <option value="$PROJECT_DIR$/apps/backend/Models/Widget/BaseModel.php" />
         <option value="$PROJECT_DIR$/apps/backend/Models/Widget/Widgets/TModelWidgetsEvents.php" />
         <option value="$PROJECT_DIR$/apps/backend/Models/Widget/Widgets/ModelWidgets.php" />
+        <option value="$PROJECT_DIR$/apps/backend/Controllers/WidgetsController.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/apps/backend/Models/Widget/Widgets/TModelWidgetsValidations.php" />
+        <option value="$PROJECT_DIR$/apps/backend/Controllers/UsersController.php" />
+        <option value="$PROJECT_DIR$/apps/backend/Models/Users/TModelUsersValidations.php" />
       </list>
     </option>
   </component>
@@ -182,6 +253,13 @@
               <item name="db-model" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="apps" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="backend" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="db-model" type="b2602c69:ProjectViewProjectNode" />
+              <item name="db-model" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="apps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="backend" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Models" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -190,7 +268,24 @@
               <item name="apps" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="backend" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Models" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Users" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="db-model" type="b2602c69:ProjectViewProjectNode" />
+              <item name="db-model" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="apps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="backend" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Models" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Widget" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="db-model" type="b2602c69:ProjectViewProjectNode" />
+              <item name="db-model" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="apps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="backend" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Models" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Widget" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Widgets" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -203,7 +298,7 @@
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ilya-CMS" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vokuro" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
@@ -266,11 +361,12 @@
       <workItem from="1550551222406" duration="14188000" />
       <workItem from="1550638972068" duration="9435000" />
       <workItem from="1550724290349" duration="2124000" />
+      <workItem from="1550729644854" duration="240000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173998000" />
+    <option name="totallyTimeSpent" value="180543000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -282,29 +378,41 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3064865" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.49783784" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5878136" sideWeight="0.49783784" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.50216216" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.49783784" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.49783784" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.301059" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.49783784" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24972972" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.49783784" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.49783784" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5878136" sideWeight="0.49783784" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.50216216" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.49783784" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.49783784" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3064865" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297619" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24972972" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -339,13 +447,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/assets/jquery-form-validator/formvalidator.jquery.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_PLUGINS_DIR$/phpstorm-library-plugin.jar!/Phalcon/Phalcon/validation/validator/Uniqueness.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1648">
@@ -480,13 +581,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/backend/Forms/Users/UsersForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3162">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/backend/Models/Category/TCategoryModelRelations.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
@@ -550,31 +644,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/backend/Models/Users/TModelUsersProperties.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/backend/Models/Users/ModelUsers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/backend/Models/Users/TModelUsersRelations.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/backend/Models/Users/TModelUsersValidations.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="44" column="5" lean-forward="false" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -586,13 +659,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/schema/ad.sql" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_1.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="369">
@@ -654,25 +720,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/backend/Models/Widget/Widgets/TModelWidgetsValidations.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/backend/Controllers/UsersController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/backend/Models/Widget/BaseModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
+        <state relative-caret-position="272">
           <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
           <folding />
         </state>
@@ -686,11 +736,110 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/apps/backend/Controllers/WidgetsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-134">
+          <caret line="53" column="31" lean-forward="false" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
+          <folding>
+            <element signature="e#129#179#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/backend/Forms/Users/UsersForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apps/backend/Models/Widget/Widgets/ModelWidgets.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-291">
-          <caret line="40" column="54" lean-forward="true" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="54" />
+        <state relative-caret-position="261">
+          <caret line="66" column="10" lean-forward="false" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/backend/Models/Widget/Widgets/TModelWidgetsValidations.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4047">
+          <caret line="251" column="22" lean-forward="true" selection-start-line="251" selection-start-column="22" selection-end-line="251" selection-end-column="22" />
+          <folding>
+            <element signature="e#53#113#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/backend/Models/Users/ModelUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/backend/Models/Users/TModelUsersProperties.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/backend/Controllers/UsersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+          <folding>
+            <element signature="e#41#80#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/backend/Models/Users/TModelUsersValidations.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="177" column="1" lean-forward="true" selection-start-line="177" selection-start-column="1" selection-end-line="177" selection-end-column="1" />
+          <folding>
+            <element signature="e#285#4705#0#PHP" expanded="false" />
+            <element signature="e#383#667#0#PHP" expanded="false" />
+            <element signature="e#672#2025#0#PHP" expanded="false" />
+            <element signature="e#724#960#0#PHP" expanded="false" />
+            <element signature="e#815#936#1#PHP" expanded="false" />
+            <element signature="e#971#1354#0#PHP" expanded="false" />
+            <element signature="e#1064#1330#1#PHP" expanded="false" />
+            <element signature="e#1365#1650#0#PHP" expanded="false" />
+            <element signature="e#1456#1626#1#PHP" expanded="false" />
+            <element signature="e#1661#1957#0#PHP" expanded="false" />
+            <element signature="e#1747#1933#1#PHP" expanded="false" />
+            <element signature="e#2030#3118#0#PHP" expanded="false" />
+            <element signature="e#2079#2501#0#PHP" expanded="false" />
+            <element signature="e#2169#2477#1#PHP" expanded="false" />
+            <element signature="e#2512#2837#0#PHP" expanded="false" />
+            <element signature="e#2600#2813#1#PHP" expanded="false" />
+            <element signature="e#2848#3033#0#PHP" expanded="false" />
+            <element signature="e#2931#3009#1#PHP" expanded="false" />
+            <element signature="e#3123#4243#0#PHP" expanded="false" />
+            <element signature="e#3173#3494#0#PHP" expanded="false" />
+            <element signature="e#3264#3470#1#PHP" expanded="false" />
+            <element signature="e#3505#3831#0#PHP" expanded="false" />
+            <element signature="e#3594#3807#1#PHP" expanded="false" />
+            <element signature="e#3842#4180#0#PHP" expanded="false" />
+            <element signature="e#3926#4156#1#PHP" expanded="false" />
+            <element signature="e#4248#4702#0#PHP" expanded="false" />
+            <element signature="e#4300#4624#0#PHP" expanded="false" />
+            <element signature="e#4393#4600#1#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
