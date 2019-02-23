@@ -30,7 +30,7 @@ trait TModelWidgetPlacesRelations
 
                 'foreignKey' => [
                     'allowNulls' => false,
-                    'message' => 'The part cannot be deleted because other tables are using it',
+                    'message' => 'The widget place cannot be deleted because other tables are using it',
                 ]
             ]
         );

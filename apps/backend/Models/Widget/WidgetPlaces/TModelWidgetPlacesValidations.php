@@ -79,7 +79,8 @@ trait TModelWidgetPlacesValidations
             new Uniqueness(
                 [
                     'message' =>'the :field is not unique',
-                    'domain' => self::class
+                    'domain' => self::class,
+                    'cancelOnFail' => true
                 ]
             )
         );

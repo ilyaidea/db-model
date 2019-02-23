@@ -72,5 +72,24 @@ class ModelWidgets extends BaseModel
             $i++;
         }
     }
+    /**
+     * finds rows in widgets database, whose place that match the specified value
+     * @param $value
+     * @return array
+     */
+    public static function findWidgetsByPlace($value)
+    {
+        $widgets = self::find(
+            [
+                'place = :place:',
+                'bind' =>
+                    [
+                        'place' => $value,
+                    ]
+            ]
+        );
+        return $widgets->toArray();
+
+    }
 
 }
