@@ -85,7 +85,7 @@ class ModelWidgetPlaces extends Model
 
         }
         return null;
-    }
+
 //        $std = new \stdClass();
 //        if (true)
 //        {
@@ -94,6 +94,6 @@ class ModelWidgetPlaces extends Model
 //            $std->messages = $message ;
 //            return $std;
 //        }
-
+    }
 
 }
