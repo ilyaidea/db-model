@@ -1,10 +1,8 @@
 <?php
 
-namespace Ad\Backend\Models\Widget\Widgets;
+namespace Lib\Mvc\Model\Widgets;
 
-
-use Ad\Backend\Models\Widget\WidgetPlaces\ModelWidgetPlaces;
-use Ad\Backend\Models\Widget\WidgetPlaces\WidgetPlacesModel;
+use Lib\Mvc\Model\WidgetPlaces\ModelWidgetPlaces;
 
 /**
  * Trait TWidgetsModelRelations

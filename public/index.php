@@ -9,6 +9,22 @@ use Phalcon\Mvc\Application as BaseApplication;
 
 class Application extends BaseApplication
 {
+    protected function registerLoaders()
+    {
+        $loader = new Loader();
+
+        /**
+         * We're a registering a set of directories taken from the configuration file
+         */
+        $loader
+            ->registerNamespaces([
+                'Lib\Mvc\Model' => __DIR__ . '/../apps/Lib/Mvc/Model'
+            ])
+            ->registerDirs([__DIR__ . '/../apps/library/'])
+            ->register();
+
+
+    }
     /**
      * Register the services here to make them general or register in the ModuleDefinition to make them module-specific
      */
@@ -16,15 +32,6 @@ class Application extends BaseApplication
     {
 
         $di = new FactoryDefault();
-
-        $loader = new Loader();
-
-        /**
-         * We're a registering a set of directories taken from the configuration file
-         */
-        $loader
-            ->registerDirs([__DIR__ . '/../apps/library/'])
-            ->register();
 
         // Registering a router
         $di->set('router', function () {
@@ -48,6 +55,8 @@ class Application extends BaseApplication
 
     public function main()
     {
+
+        $this->registerLoaders();
 
         $this->registerServices();
 

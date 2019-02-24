@@ -1,5 +1,5 @@
 <?php
-namespace Ad\Backend\Models\Widget;
+namespace Lib\Mvc\Model;
 
 use Phalcon\Mvc\Model;
 
