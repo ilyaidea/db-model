@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Webhouse
- * Date: 2/18/2019
- * Time: 9:46 AM
- */
 
-namespace Ad\Backend\Models\Widget\WidgetPlaces;
-
+namespace Lib\Mvc\Model\WidgetPlaces;
 
 trait TModelWidgetPlacesProperties
 {

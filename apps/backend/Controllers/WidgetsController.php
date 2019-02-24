@@ -9,7 +9,7 @@
 namespace Ad\Backend\Controllers;
 
 
-use Ad\Backend\Models\Widget\Widgets\ModelWidgets;
+use Lib\Mvc\Model\Widgets\ModelWidgets;
 use Phalcon\Mvc\Controller;
 
 class WidgetsController extends Controller

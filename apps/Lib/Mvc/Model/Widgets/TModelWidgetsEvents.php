@@ -1,5 +1,5 @@
 <?php
-namespace Ad\Backend\Models\Widget\Widgets;
+namespace Lib\Mvc\Model\Widgets;
 
 trait TModelWidgetsEvents
 {

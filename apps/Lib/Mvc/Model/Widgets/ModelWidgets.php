@@ -1,9 +1,8 @@
 <?php
 
-namespace Ad\Backend\Models\Widget\Widgets;
+namespace Lib\Mvc\Model\Widgets;
 
-
-use Ad\Backend\Models\Widget\BaseModel;
+use Lib\Mvc\Model\BaseModel;
 
 class ModelWidgets extends BaseModel
 {
@@ -18,6 +17,12 @@ class ModelWidgets extends BaseModel
 
     }
 
+    /**
+     * if position field is empty,this method sets position value with
+     *
+     *
+     *
+     */
     public function setPositionIfEmpty()
     {
         if (!is_null($this->getPosition()))
@@ -25,7 +30,7 @@ class ModelWidgets extends BaseModel
 
         $queryMaxPosition = $this->getModelsManager()->createBuilder()
             ->columns('MAX(position) AS max')
-            ->from(ModelWidgets::class)
+            ->from(self::class)
             ->getQuery()
             ->getSingleResult();
 
@@ -39,7 +44,7 @@ class ModelWidgets extends BaseModel
     {
         $queryWidgetsForSortPosition = $this->getModelsManager()->createBuilder();
         $queryWidgetsForSortPosition->columns(['id']);
-        $queryWidgetsForSortPosition->from(ModelWidgets::class);
+        $queryWidgetsForSortPosition->from(self::class);
 
         if ($this->isModeCreate())
             $queryWidgetsForSortPosition->orderBy('position ASC,created DESC');

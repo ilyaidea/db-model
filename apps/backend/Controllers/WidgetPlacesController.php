@@ -1,16 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Webhouse
- * Date: 2/23/2019
- * Time: 8:31 AM
- */
 
 namespace Ad\Backend\Controllers;
 
 
-use Ad\Backend\Models\Widget\WidgetPlaces\ModelWidgetPlaces;
-use Ad\Backend\Models\Widget\Widgets\ModelWidgets;
+use Lib\Mvc\Model\WidgetPlaces\ModelWidgetPlaces;
 use Phalcon\Mvc\Controller;
 
 class WidgetPlacesController extends Controller
@@ -20,7 +13,8 @@ class WidgetPlacesController extends Controller
 
         $widgets = new ModelWidgetPlaces();
 
-        $widgets->updateValueByName('123','footer');
+//        $widgets->updateValueByName('123','footer');
+        $widgets->updateMethod(4,['value' => '','name' =>'123']);
 
         die;
     }
@@ -34,7 +28,8 @@ class WidgetPlacesController extends Controller
         try
         {
             $widgetPlace = new ModelWidgetPlaces();
-            $widgetPlace->updateValueById(1,'footer');
+
+            $widgetPlace->updateMethod(4,['value' => 'footer','name' =>'foot']);
         }
         catch (\Exception $exception)
         {

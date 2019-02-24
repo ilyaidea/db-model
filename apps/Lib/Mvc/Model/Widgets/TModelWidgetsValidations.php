@@ -1,9 +1,8 @@
 <?php
 
-namespace Ad\Backend\Models\Widget\Widgets;
+namespace Lib\Mvc\Model\Widgets;
 
-
-use Ad\Backend\Models\Widget\WidgetPlaces\ModelWidgetPlaces;
+use Lib\Mvc\Model\WidgetPlaces\ModelWidgetPlaces;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\InclusionIn;

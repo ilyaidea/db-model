@@ -21,17 +21,15 @@ class Module implements ModuleDefinitionInterface
     public function registerAutoloaders(DiInterface $di = null)
     {
         $loader = new Loader();
-
         $loader->registerNamespaces(
             [
-                'Ad\Backend\Controllers' => '../apps/backend/controllers/',
-                'Ad\Backend\Models'      => '../apps/backend/models/',
-                'Ad\Backend\Plugins'     => '../apps/backend/plugins/',
-                'Ad\Backend\Forms'     => '../apps/backend/forms/',
-                'Ad\Backend\Lib'     => '../apps/backend/lib/',
+                'Ad\Backend\Controllers' => __DIR__.'/controllers/',
+                'Ad\Backend\Models'      => __DIR__.'/models/',
+                'Ad\Backend\Plugins'     => __DIR__.'/plugins/',
+                'Ad\Backend\Forms'     => __DIR__.'/forms/',
+                'Ad\Backend\Lib'     => __DIR__.'/lib/',
             ]
         );
-
         $loader->register();
     }
 
