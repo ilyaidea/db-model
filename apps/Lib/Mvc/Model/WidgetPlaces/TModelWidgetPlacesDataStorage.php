@@ -17,6 +17,7 @@ namespace Lib\Mvc\Model\WidgetPlaces;
       */
      public function updateMethod($id,$data)
     {
+        /** @var ModelWidgetPlaces $widgetPlace */
         $widgetPlace = self::findFirst($id);
 
         if (!$widgetPlace)
@@ -33,13 +34,13 @@ namespace Lib\Mvc\Model\WidgetPlaces;
 
                 $widgetPlace->$methodName($value);
 
-                if (!$widgetPlace->update())
-                    var_dump($widgetPlace->getMessages());
             }
-
-            else
-                var_dump('dose not exist  '.'set'.$ucfirstKey);
         }
+        if (!$widgetPlace->update())
+            var_dump($widgetPlace->getMessages());
+        else
+            var_dump('updated');
+
     }
 
 }

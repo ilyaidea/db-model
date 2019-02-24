@@ -203,8 +203,9 @@ trait TModelWidgetsValidations
             new PresenceOf(
                 [
                     'message' => 'The :field is required',
-                    'cancelOnFail' => true,
-                    'allowEmpty' => true
+                    'allowEmpty' => true,
+                    'cancelOnFail' => true
+
                 ]
             )
         );

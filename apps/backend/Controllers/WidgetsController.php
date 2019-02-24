@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Webhouse
- * Date: 2/21/2019
- * Time: 9:45 AM
- */
 
 namespace Ad\Backend\Controllers;
-
 
 use Lib\Mvc\Model\Widgets\ModelWidgets;
 use Phalcon\Mvc\Controller;
@@ -73,5 +66,21 @@ class WidgetsController extends Controller
 
 
         $this->view->disable();
+    }
+    public function updateAction()
+    {
+        $widgetmodel = new ModelWidgets();
+        $a = $widgetmodel->getListWidgetsNamePlace();
+
+        die(print_r($a));
+
+        $this->view->disable();
+
+    }
+    public function storeDataAction()
+    {
+        $widget = new ModelWidgets();
+        $widget->storeData(null,['name'=>'123','place' => 'header','routeName'=>'routename','namespace'=>'spaces']);
+        die;
     }
 }
