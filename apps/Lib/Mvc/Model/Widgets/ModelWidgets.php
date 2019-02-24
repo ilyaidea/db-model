@@ -64,11 +64,17 @@ class ModelWidgets extends BaseModel
         {
             /** @var self $widget */
             $widget = self::findFirst($widgetForSortPosition->id);
+            if($this->getTransaction())
+                $widget->setTransaction($this->getTransaction());
 
             $widget->setPosition($i);
 
             if(!$widget->update())
             {
+                if($widget->getTransaction())
+                {
+                    $widget->getTransaction()->rollback('dont update');
+                }
                 foreach($widget->getMessages() as $message)
                 {
                     die(print_r($message->getMessage()));

@@ -39,4 +39,14 @@ class BaseModel extends Model
     {
         $this->modeUpdate = $modeUpdate;
     }
+
+    /**
+     * Get transaction
+     *
+     * @return Model\TransactionInterface
+     */
+    public function getTransaction()
+    {
+        return $this->_transaction;
+    }
 }
