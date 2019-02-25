@@ -7,7 +7,7 @@ trait TModelWidgetsProperties
     private $id;
     private $name;
     private $place;
-    private $routeName;
+    private $route_name;
     private $namespace;
     private $position;
     private $display;
@@ -68,7 +68,7 @@ trait TModelWidgetsProperties
      */
     public function getRouteName()
     {
-        return $this->routeName;
+        return $this->route_name;
     }
 
     /**
@@ -76,7 +76,7 @@ trait TModelWidgetsProperties
      */
     public function setRouteName($routeName)
     {
-        $this->routeName = $routeName;
+        $this->route_name = $routeName;
     }
 
     /**
