@@ -6,6 +6,14 @@ namespace Lib\Mvc\Model\Widgets;
 trait TModelWidgetsDataStorage
 {
     /**
+     * save in database,according to id value.
+     * if id = null: create new object and save new data.
+     * if id = value: findFirst object and update data.
+     *@example
+     *<code>
+     *    $widget = new ModelWidgets();
+     *     $widget->storeData(null,['name'=>'123','route_name'=>'routename','namespace'=>'spaces']);
+     *</code>
      * @param null/int $id
      * @param array $data
      */
@@ -34,7 +42,11 @@ trait TModelWidgetsDataStorage
         }
 
         if (!$widget->save())
+        {
+
             var_dump($widget->getMessages());
+        }
+
         else
             var_dump('updated');
 

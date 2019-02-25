@@ -2,9 +2,9 @@
 
 namespace Lib\Mvc\Model\WidgetPlaces;
 
-use Phalcon\Mvc\Model;
+use Lib\Mvc\Model\BaseModel;
 
-class ModelWidgetPlaces extends Model
+class ModelWidgetPlaces extends BaseModel
 {
     use TModelWidgetPlacesProperties;
     use TModelWidgetPlacesRelations;

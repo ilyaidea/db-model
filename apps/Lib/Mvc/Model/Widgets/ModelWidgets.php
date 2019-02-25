@@ -89,11 +89,32 @@ class ModelWidgets extends BaseModel
     }
 
     /**
-     * finds rows in widgets database, whose place that match the specified value
+     * finds objects in widgets database, whose place that match the specified value
+     * @example
+     * <code>
+     *  $widget = new ModelWidgets();
+     *  $widget->findWidgetsByPlace('footer');
+     *
+ *       [0] => Array
+            (
+                [id] => 1
+                [name] => store
+                [place] => footer
+                [route_name] => route
+                [namespace] => name space
+                [position] => 2
+                [display] => block
+                [width] => 12px
+                [created] => 2019-02-20 11:45:31
+                [modified] => 2019-02-24 13:21:48
+                )
+
+     *
+     * </code>
      * @param $value
-     * @return array
+     * @return array|null
      */
-    public static function findWidgetsByPlace($value)
+    public function findWidgetsByPlace($value)
     {
         $widgets = self::find(
             [
@@ -104,10 +125,37 @@ class ModelWidgets extends BaseModel
                     ]
             ]
         );
-        return $widgets->toArray();
+        if (!empty($widgets))
+            return $widgets->toArray();
 
+        else
+            return null;
     }
 
+    /**
+     * returns an array of places with their group of widgets
+     * @example
+     *  Array
+            (
+                [footer] => Array
+                (
+                    [0] => widget1
+                    [1] => widget2
+                    [2] => widget3
+                    [3] => widget4
+                    [4] => widget5
+                )
+
+                [header] => Array
+                (
+                    [0] => widget6
+                    [1] => widget7
+                    [2] => widget8
+                )
+            )
+     *
+     * @return array|null
+     */
     public function getListWidgetsNamePlace()
     {
         $widgets = ModelWidgets::find(

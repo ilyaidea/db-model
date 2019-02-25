@@ -24,14 +24,6 @@ trait TModelWidgetsProperties
     }
 
     /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
      * @return mixed
      */
     public function getName()
@@ -72,12 +64,13 @@ trait TModelWidgetsProperties
     }
 
     /**
-     * @param mixed $routeName
+     * @param mixed $route_name
      */
-    public function setRouteName($routeName)
+    public function setRouteName($route_name)
     {
         $this->route_name = $routeName;
     }
+
 
     /**
      * @return mixed

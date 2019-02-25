@@ -4,6 +4,7 @@ namespace Ad\Backend\Controllers;
 
 use Lib\Mvc\Model\Widgets\ModelWidgets;
 use Phalcon\Mvc\Controller;
+use Phalcon\Mvc\Model\Transaction;
 
 class WidgetsController extends Controller
 {
@@ -44,22 +45,32 @@ class WidgetsController extends Controller
     }
     public function addAction()
     {
+        $manager = new Transaction\Manager();
+
+        $transaction = $manager->get();
+
         $w = new ModelWidgets();
         $w->setName('posssss');
         $w->setPlace('bb');
         $w->setPosition(3);
-        $w->setRouteName('route');
+        $w->setRoute_name('route');
         $w->setNamespace('name space');
         $w->setDisplay('block');
         $w->setWidth("33.64px");
+
+        $w->setTransaction($transaction);
 
         if (!$w->save())
         {
             foreach ($w->getMessages() as $message)
                 $this->flash->error($message);
+
+            $transaction->rollback('rollback: can not save');
         }
         else
         {
+            $transaction->commit();
+
             $w->sortByPosition();
             echo 'saved';
         }
@@ -70,9 +81,10 @@ class WidgetsController extends Controller
     public function updateAction()
     {
         $widgetmodel = new ModelWidgets();
-        $a = $widgetmodel->getListWidgetsNamePlace();
+//        $a = $widgetmodel->getListWidgetsNamePlace();
+        $w = $widgetmodel->findWidgetsByPlace('footer');
 
-        die(print_r($a));
+        die(print_r($w));
 
         $this->view->disable();
 
@@ -80,7 +92,7 @@ class WidgetsController extends Controller
     public function storeDataAction()
     {
         $widget = new ModelWidgets();
-        $widget->storeData(null,['name'=>'123','place' => 'header','routeName'=>'routename','namespace'=>'spaces']);
+        $widget->storeData(null,['name'=>'123','route_name'=>'routename','namespace'=>'spaces']);
         die;
     }
 }

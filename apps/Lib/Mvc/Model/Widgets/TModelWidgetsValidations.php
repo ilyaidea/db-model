@@ -100,7 +100,7 @@ trait TModelWidgetsValidations
     private function validationRouteName()
     {
         $this->validator->add(
-            'routeName',
+            'route_name',
             new PresenceOf(
                 [
                     'message' => 'The :field is required',
@@ -109,7 +109,7 @@ trait TModelWidgetsValidations
             )
         );
         $this->validator->add(
-            'routeName',
+            'route_name',
             new StringLength(
                 [
                     'max' => 100,
@@ -118,7 +118,7 @@ trait TModelWidgetsValidations
                 ]
             )
         );
-        $this->validator->setFilters('routeName',['trim','striptags']);
+        $this->validator->setFilters('route_name',['trim','striptags']);
 
     }
     private function validationNamespace()
