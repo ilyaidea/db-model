@@ -13,7 +13,7 @@ trait TModelPagesValidation
 {
     public function validation()
     {
-        $validator = new Validation();
+        $validator = new \Phalcon\Validation();
 
         $validator->add(
             'title',

@@ -5,13 +5,11 @@ namespace Lib\Mvc\Model\Widgets;
 trait TModelWidgetsProperties
 {
     private $id;
+    private $page_id;
     private $name;
     private $place;
-    private $route_name;
     private $namespace;
     private $position;
-    private $display;
-    private $width;
     private $created;
     private $modified;
 
@@ -21,6 +19,22 @@ trait TModelWidgetsProperties
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPageId()
+    {
+        return $this->page_id;
+    }
+
+    /**
+     * @param mixed $page_id
+     */
+    public function setPageId($page_id)
+    {
+        $this->page_id = $page_id;
     }
 
     /**
@@ -58,23 +72,6 @@ trait TModelWidgetsProperties
     /**
      * @return mixed
      */
-    public function getRouteName()
-    {
-        return $this->route_name;
-    }
-
-    /**
-     * @param mixed $route_name
-     */
-    public function setRouteName($route_name)
-    {
-        $this->route_name = $routeName;
-    }
-
-
-    /**
-     * @return mixed
-     */
     public function getNamespace()
     {
         return $this->namespace;
@@ -102,38 +99,6 @@ trait TModelWidgetsProperties
     public function setPosition($position)
     {
         $this->position = $position;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDisplay()
-    {
-        return $this->display;
-    }
-
-    /**
-     * @param mixed $display
-     */
-    public function setDisplay($display)
-    {
-        $this->display = $display;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getWidth()
-    {
-        return $this->width;
-    }
-
-    /**
-     * @param mixed $width
-     */
-    public function setWidth($width)
-    {
-        $this->width = $width;
     }
 
     /**
@@ -167,7 +132,5 @@ trait TModelWidgetsProperties
     {
         $this->modified = $modified;
     }
-
-
 
 }

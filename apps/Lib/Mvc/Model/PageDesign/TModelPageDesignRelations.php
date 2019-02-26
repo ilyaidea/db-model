@@ -14,9 +14,9 @@ trait TModelPageDesignRelations
             ModelPages::class,
             'id',
             [
-                'alias' => 'Widget',
+                'alias' => 'Pages',
                 'foreignKey' => [
-                    'message' => 'The widget_id does not exist on the Widget model',
+                    'message' => 'The page_id does not exist on the pages model',
                     'action'  => Relation::ACTION_CASCADE
                 ]
             ]

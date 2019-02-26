@@ -2,6 +2,7 @@
 
 namespace Lib\Mvc\Model\Widgets;
 
+use Lib\Mvc\Model\WidgetOptions\ModelWidgetOptions;
 use Lib\Mvc\Model\WidgetPlaces\ModelWidgetPlaces;
 
 /**
@@ -23,6 +24,19 @@ trait TModelWidgetsRelations
                 'foreignKey' => [
                     'allowNulls' => false,
                     'message' => 'The place value does not exist on the widget_places model'
+                ]
+            ]
+        );
+
+        $this->belongsTo(
+            'id',
+            ModelWidgetOptions::class,
+            'widget_id',
+            [
+                'alias' => 'widgetOptions',
+                'foreignKey' => [
+                    'allowNulls' => false,
+                    'message' => 'The widgetOption value does not exist on the widget_options model'
                 ]
             ]
         );

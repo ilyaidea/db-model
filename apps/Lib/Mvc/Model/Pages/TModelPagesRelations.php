@@ -1,9 +1,9 @@
 <?php
 namespace Lib\Mvc\Model\Pages;
 
-
-use Modules\System\Native\Models\Language\ModelLanguage;
-use Modules\System\PageManager\Models\Keywords\ModelKeywords;
+use Lib\Mvc\Model\Language\ModelLanguage;
+use Lib\Mvc\Model\PageDesign\ModelPageDesign;
+use Lib\Mvc\Model\Widgets\ModelWidgets;
 
 trait TModelPagesRelations
 {
@@ -23,7 +23,7 @@ trait TModelPagesRelations
         );
 
         $this->belongsTo(
-            'language',
+            'language_iso',
             ModelLanguage::class,
             'iso',
             [
@@ -45,6 +45,36 @@ trait TModelPagesRelations
                 ]
             ]
         );
+
+        $this->hasMany(
+            'id',
+            ModelWidgets::class,
+            'page_id',
+            [
+                'alias' => 'Widgets',
+
+                'foreignKey' => [
+                    'allowNulls' => false,
+                    'message' => 'The page  cannot be deleted because other tables are using it',
+                ]
+            ]
+        );
+
+        $this->belongsTo(
+            'id',
+            ModelPageDesign::class,
+            'page_id',
+            [
+                'alias' => 'PageDesign',
+
+                'foreignKey' => [
+                    'allowNulls' => false,
+                    'message' => 'The page  cannot be deleted because other tables are using it',
+                ]
+            ]
+        );
+
+
     }
 
 }

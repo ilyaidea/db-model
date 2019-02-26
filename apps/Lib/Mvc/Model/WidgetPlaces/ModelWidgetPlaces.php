@@ -12,7 +12,7 @@ class ModelWidgetPlaces extends BaseModel
     use TModelWidgetPlacesEvents;
     use TModelWidgetPlacesDataStorage;
 
-    public function initialize()
+    public function init()
     {
         $this->setSource('ilya_widget_places');
     }

@@ -12,7 +12,7 @@ class ModelWidgets extends BaseModel
     use TModelWidgetsEvents;
     use TModelWidgetsDataStorage;
 
-    public function initialize()
+    public function init()
     {
         $this->setSource('ilya_widgets');
 
