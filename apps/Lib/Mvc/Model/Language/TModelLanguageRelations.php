@@ -20,7 +20,7 @@ trait TModelLanguageRelations
         $this->hasMany(
             'iso',
             ModelTranslate::class,
-            'language',
+            'language_iso',
             [
                 'alias' => 'Translates',
 

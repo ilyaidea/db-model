@@ -8,10 +8,14 @@ class BaseModel extends Model
     private $modeCreate = false;
     private $modeUpdate = false;
 
+
     public function initialize()
     {
         if(method_exists($this,'init'))
             $this->init();
+
+        if(method_exists($this,'relations'))
+            $this->relations();
     }
     /**
      * @return bool

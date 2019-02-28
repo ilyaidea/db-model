@@ -1,6 +1,6 @@
 <?php
 
-namespace Ad\Backend;
+namespace Backend;
 
 use Ad\Backend\Lib\Tag;
 use Phalcon\Db\Adapter\Pdo\Mysql;
@@ -23,11 +23,11 @@ class Module implements ModuleDefinitionInterface
         $loader = new Loader();
         $loader->registerNamespaces(
             [
-                'Ad\Backend\Controllers' => __DIR__.'/controllers/',
-                'Ad\Backend\Models'      => __DIR__.'/models/',
-                'Ad\Backend\Plugins'     => __DIR__.'/plugins/',
-                'Ad\Backend\Forms'     => __DIR__.'/forms/',
-                'Ad\Backend\Lib'     => __DIR__.'/lib/',
+                'Backend\Controllers' => __DIR__.'/controllers/',
+                'Backend\Models'      => __DIR__.'/models/',
+                'Backend\Plugins'     => __DIR__.'/plugins/',
+                'Backend\Forms'     => __DIR__.'/forms/',
+                'Backend\Lib'     => __DIR__.'/lib/',
             ]
         );
         $loader->register();
@@ -43,7 +43,7 @@ class Module implements ModuleDefinitionInterface
         // Registering a dispatcher
         $di->set('dispatcher', function () {
             $dispatcher = new Dispatcher();
-            $dispatcher->setDefaultNamespace('Ad\Backend\Controllers\\');
+            $dispatcher->setDefaultNamespace('Backend\Controllers\\');
             return $dispatcher;
         });
 

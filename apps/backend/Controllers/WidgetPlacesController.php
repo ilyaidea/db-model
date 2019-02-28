@@ -1,6 +1,6 @@
 <?php
 
-namespace Ad\Backend\Controllers;
+namespace Backend\Controllers;
 
 
 use Lib\Mvc\Model\WidgetPlaces\ModelWidgetPlaces;

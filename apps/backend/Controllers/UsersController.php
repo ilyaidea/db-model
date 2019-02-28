@@ -1,6 +1,8 @@
 <?php
 
-namespace Ad\Backend\Controllers;
+namespace Backend\Controllers;
+
+
 use Ad\Backend\Models\Users\ModelUsers;
 use Phalcon\Mvc\Controller;
 

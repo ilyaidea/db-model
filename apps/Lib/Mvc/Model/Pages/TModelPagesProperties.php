@@ -6,13 +6,13 @@ trait TModelPagesProperties
 {
     private $id;
     private $parent_id;
+    private $language_iso;
     private $title;
     private $title_menu;
     private $slug;          //varchar(255),allow null,default null
     private $keywords;
     private $description;
     private $content;
-    private $language;
     private $position;
     private $created_at;
     private $modified_in;
@@ -44,6 +44,23 @@ trait TModelPagesProperties
     /**
      * @return mixed
      */
+    public function getLanguageIso()
+    {
+        return $this->language_iso;
+    }
+
+    /**
+     * @param mixed $language_iso
+     */
+    public function setLanguageIso($language_iso)
+    {
+        $this->language_iso = $language_iso;
+    }
+
+
+    /**
+     * @return mixed
+     */
     public function getTitle()
     {
         return $this->title;
@@ -71,22 +88,6 @@ trait TModelPagesProperties
     public function setContent($content)
     {
         $this->content = $content;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLanguage()
-    {
-        return $this->language;
-    }
-
-    /**
-     * @param mixed $language
-     */
-    public function setLanguage( $language )
-    {
-        $this->language = $language;
     }
 
     /**

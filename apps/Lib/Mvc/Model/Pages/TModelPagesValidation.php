@@ -2,63 +2,194 @@
 namespace Lib\Mvc\Model\Pages;
 
 
-use Lib\Validation;
-use Modules\System\Native\Models\Language;
+use Lib\Mvc\Model\Language\ModelLanguage;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\InclusionIn;
 use Phalcon\Validation\Validator\Numericality;
 use Phalcon\Validation\Validator\PresenceOf;
+use Phalcon\Validation\Validator\StringLength;
 use Phalcon\Validation\Validator\Uniqueness;
+use Phalcon\Validation\Validator\ExclusionIn;
 
 trait TModelPagesValidation
 {
+    /** @var Validation $validator */
+    private $validator;
+
     public function validation()
     {
-        $validator = new \Phalcon\Validation();
+        $this->validator = new Validation();
 
-        $validator->add(
-            'title',
-            new PresenceOf([
-                'message' => 'this :field is required'
-            ])
-        );
+        $this->validationParentId();
 
-//        $validator->add(
-//            'title',
-//            new Uniqueness([
-//                'model' => new ModelPages(),
-//                'message' => 'title must be unique'
-//            ])
-//        );
+        $this->validationLanguageIso();
 
-        // Language
-        $validator->add(
-            'language',
-            new InclusionIn([
-                'domain' => array_column(Language\ModelLanguage::findCachedLanguages(), 'iso'),
-                'message' => 'language is not in domain'
-            ])
-        );
+        $this->validationTitle();
 
-//        dump(self::findAllParentsByLang($this->getLanguage()));
-        // parent id
-        $validator->add(
-            'parent_id',
-            new InclusionIn([
-                'domain' => self::findAllParentsByLang($this->getLanguage()),
-                'message' => 'parent id is not in domain',
-                'allowEmpty' => true
-            ])
-        );
+        $this->validationTitleMenu();
 
-        // Position
-        $validator->add(
-            'position',
-            new Numericality([
-                'message' => 'the :field must be numeric',
-                'allowEmpty' => true
-            ])
-        );
+        $this->validationSlug();
 
-        return $this->validate($validator);
+        $this->validationKeywords();
+
+        $this->validationDescription();
+
+        $this->validationContent();
+
+        $this->validationPosition();
+
+        return $this->validate($this->validator);
+
     }
+    private function validationParentId()
+    {
+        $this->validator->add(
+            'parent_id',
+            new Numericality(
+                [
+                    'message' => 'the :field is not numeric',
+                    'allowEmpty' => true,
+                    'cancelOnFail' => true
+                ]
+            )
+        );
+
+        $this->validator->add(
+            'parent_id',
+            new InclusionIn(
+                [
+                    'message' => 'the :field does not exist in Page model',
+                    'domain'  => array_column(self::find()->toArray(),'iso'),
+                    'cancelOnFail' => true,
+                    'allowEmpty' => true
+                ]
+            )
+        );
+
+    }
+     private function validationLanguageIso()
+    {
+        $this->validator->add(
+            'language_iso',
+            new PresenceOf(
+                [
+                    'message' => 'the :field is required',
+                    'cancelOnFail' => true
+                ]
+            )
+        );
+
+        $this->validator->add(
+            'language_iso',
+            new StringLength(
+                 [
+                     'max' => 10,
+                     'messageMaximum' => ':field length is too long',
+                     'cancelOnFail' => true
+                 ]
+            )
+        );
+
+        $this->validator->add(
+            'language_iso',
+            new InclusionIn(
+                [
+                    'message' => 'the :field does not exist in Language model',
+                    'domain'  => array_column(ModelLanguage::find()->toArray(),'iso'),
+                    'cancelOnFail' => true
+                ]
+            )
+        );
+
+    }
+     private function validationTitle()
+     {
+         $this->validator->add(
+             'title',
+             new PresenceOf(
+                 [
+                     'message' => 'the :field is required',
+                     'cancelOnFail' => true
+                 ]
+             )
+         );
+
+         $this->validator->add(
+             'title',
+             new StringLength(
+                 [
+                     'max' => 100,
+                     'messageMaximum' => ':field length is too long',
+                     'cancelOnFail' => true
+                 ]
+             )
+         );
+
+         $this->validator->add(
+             'title',
+             new Uniqueness(
+                 [
+                     'message' => 'the :field is not unique',
+                     'model'   => self::class,
+                     'cancelOnFail' => true
+                 ]
+             )
+         );
+
+//         $this->validator->add(
+//             'title',
+//             new Validation\Validator\Alpha(
+//                 [
+//                     'message' => 'the :field is not Alpha',
+//                     'cancelOnFail' => true
+//                 ]
+//             )
+//         );
+
+     }
+     private function validationTitleMenu()
+    {
+        $this->validator->add(
+            'title_menu',
+            new PresenceOf(
+                [
+                    'message' => 'the :field is required',
+                    'cancelOnFail' => true
+                ]
+            )
+        );
+
+        $this->validator->add(
+            'title_menu',
+            new StringLength(
+                [
+                    'max' => 20,
+                    'messageMaximum' => ':field length is too long',
+                    'cancelOnFail' => true
+                ]
+            )
+        );
+
+    }
+     private function validationSlug()
+    {
+
+    }
+     private function validationKeywords()
+    {
+
+    }
+     private function validationDescription()
+    {
+
+    }
+     private function validationContent()
+    {
+
+    }
+     private function validationPosition()
+    {
+
+    }
+
 }

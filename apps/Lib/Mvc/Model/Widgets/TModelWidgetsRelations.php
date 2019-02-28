@@ -8,7 +8,7 @@ use Lib\Mvc\Model\WidgetPlaces\ModelWidgetPlaces;
 
 /**
  * Trait TWidgetsModelRelations
- * @package Ad\Backend\Models\Widget\Widgets
+ * @package db-model\Backend\Models\Widget\Widgets
  * @property ModelWidgetPlaces $widgetPlace
  * @method ModelWidgetPlaces getWidgetPlace()
  * @property ModelWidgetOptions $widgetOption
@@ -16,7 +16,7 @@ use Lib\Mvc\Model\WidgetPlaces\ModelWidgetPlaces;
  * @property ModelPages $page
  * @method ModelPages getPage()
  */
-trait TModelWidgetsRelations
+trait TModelWidgetsRelationsR
 {
     public function relations()
     {

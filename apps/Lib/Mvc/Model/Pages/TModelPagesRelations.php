@@ -2,7 +2,6 @@
 namespace Lib\Mvc\Model\Pages;
 
 use Lib\Mvc\Model\Language\ModelLanguage;
-use Lib\Mvc\Model\PageDesign\ModelPageDesign;
 use Lib\Mvc\Model\Widgets\ModelWidgets;
 
 /**
@@ -10,8 +9,8 @@ use Lib\Mvc\Model\Widgets\ModelWidgets;
  * @package Lib\Mvc\Model\Pages
  * @property ModelWidgets[] $widgets
  * @method ModelWidgets[] getWidgets()
- * @property ModelPageDesign $pageDesign
- * @method ModelPageDesign getPageDesign()
+ * @property ModelLanguage $lang
+ * @method ModelLanguage getLang()
  */
 trait TModelPagesRelations
 {
@@ -35,9 +34,10 @@ trait TModelPagesRelations
             ModelLanguage::class,
             'iso',
             [
-                'alias' => 'Language',
+                'alias' => 'Lang',
                 'foreignKey' => [
-                    'message' => 'The language does not exist in Language model'
+                    'message' => 'The language does not exist in Language model',
+                    'allowNulls' => false,
                 ]
             ]
         );
@@ -67,21 +67,6 @@ trait TModelPagesRelations
                 ]
             ]
         );
-
-        $this->belongsTo(
-            'id',
-            ModelPageDesign::class,
-            'page_id',
-            [
-                'alias' => 'PageDesign',
-
-                'foreignKey' => [
-                    'allowNulls' => false,
-                    'message' => 'The page design value does not exist on the PageDesign model',
-                ]
-            ]
-        );
-
 
     }
 

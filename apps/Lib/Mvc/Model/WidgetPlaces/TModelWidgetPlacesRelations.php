@@ -6,7 +6,7 @@ use Lib\Mvc\Model\Widgets\ModelWidgets;
 
 /**
  * Trait TWidgetPlacesModelRelations
- * @package Ad\Backend\Models\Widget\WidgetPlaces
+ * @package db-model\Backend\Models\Widget\WidgetPlaces
  * @method ModelWidgets[] getWidgets()
  * @property ModelWidgets[] $widgets
  */
