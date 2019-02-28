@@ -6,7 +6,7 @@ namespace Lib\Mvc\Model\Translate;
 trait TModelTranslateProperties
 {
     private $id;
-    private $language;
+    private $language_iso;
     private $phrase;
     private $translation;
 
@@ -14,14 +14,23 @@ trait TModelTranslateProperties
     {
         return $this->id;
     }
-    public function getLanguage()
+
+    /**
+     * @return mixed
+     */
+    public function getLanguageIso()
     {
-        return $this->language;
+        return $this->language_iso;
     }
-    public function setLanguage( $language )
+
+    /**
+     * @param mixed $language_iso
+     */
+    public function setLanguageIso($language_iso)
     {
-        $this->language = $language;
+        $this->language_iso = $language_iso;
     }
+
     public function getPhrase()
     {
         return $this->phrase;

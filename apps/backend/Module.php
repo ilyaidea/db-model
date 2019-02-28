@@ -91,7 +91,7 @@ class Module implements ModuleDefinitionInterface
                     "host" => "localhost",
                     "username" => "root",
                     "password" => "",
-                    "dbname" => "ad",
+                    "dbname" => "db-model",
                     'charset'  => 'utf8mb4',
                     'prefix'   => 'ilya_',
 

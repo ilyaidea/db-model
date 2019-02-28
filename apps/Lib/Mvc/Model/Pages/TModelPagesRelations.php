@@ -5,6 +5,14 @@ use Lib\Mvc\Model\Language\ModelLanguage;
 use Lib\Mvc\Model\PageDesign\ModelPageDesign;
 use Lib\Mvc\Model\Widgets\ModelWidgets;
 
+/**
+ * Trait TModelPagesRelations
+ * @package Lib\Mvc\Model\Pages
+ * @property ModelWidgets[] $widgets
+ * @method ModelWidgets[] getWidgets()
+ * @property ModelPageDesign $pageDesign
+ * @method ModelPageDesign getPageDesign()
+ */
 trait TModelPagesRelations
 {
     protected function relations()
@@ -55,7 +63,7 @@ trait TModelPagesRelations
 
                 'foreignKey' => [
                     'allowNulls' => false,
-                    'message' => 'The page  cannot be deleted because other tables are using it',
+                    'message' => 'The page cannot be deleted because other tables are using it',
                 ]
             ]
         );
@@ -69,7 +77,7 @@ trait TModelPagesRelations
 
                 'foreignKey' => [
                     'allowNulls' => false,
-                    'message' => 'The page  cannot be deleted because other tables are using it',
+                    'message' => 'The page design value does not exist on the PageDesign model',
                 ]
             ]
         );

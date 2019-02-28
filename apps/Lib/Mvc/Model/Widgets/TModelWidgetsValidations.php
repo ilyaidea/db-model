@@ -2,13 +2,13 @@
 
 namespace Lib\Mvc\Model\Widgets;
 
+use Lib\Mvc\Model\Pages\ModelPages;
 use Lib\Mvc\Model\WidgetPlaces\ModelWidgetPlaces;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\InclusionIn;
 use Phalcon\Validation\Validator\StringLength;
 use Phalcon\Validation\Validator\Numericality;
-use Phalcon\Validation\Validator\Callback;
 
 
 trait TModelWidgetsValidations
@@ -31,6 +31,40 @@ trait TModelWidgetsValidations
         $this->validationPosition();
 
         return $this->validate($this->validator);
+
+    }
+    private function validationPageId()
+    {
+        $this->validator->add(
+            'page_id',
+            new PresenceOf(
+                [
+                    'message' => 'the :field is required',
+                    'cancelOnFail' => true
+                ]
+            )
+        );
+
+        $this->validator->add(
+            'page_id',
+            new Numericality(
+                [
+                    'message' => 'the :field is not numeric',
+                    'cancelOnFail' => true
+                ]
+            )
+        );
+
+        $this->validator->add(
+            'page_id',
+            new InclusionIn(
+                [
+                    'message' => 'the :field does not exist in Page model',
+                    'domain'  => array_column(ModelPages::find()->toArray(),'id'),
+                    'cancelOnFail' => true
+                ]
+            )
+        );
 
     }
     private function validationName()
@@ -140,10 +174,6 @@ trait TModelWidgetsValidations
             )
         );
         $this->validator->setFilters('position',['trim','striptags','int']);
-    }
-    private function validationPageId()
-    {
-
     }
 
 }
