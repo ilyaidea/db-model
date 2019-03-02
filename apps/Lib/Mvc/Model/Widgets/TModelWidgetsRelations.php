@@ -16,7 +16,7 @@ use Lib\Mvc\Model\WidgetPlaces\ModelWidgetPlaces;
  * @property ModelPages $page
  * @method ModelPages getPage()
  */
-trait TModelWidgetsRelationsR
+trait TModelWidgetsRelations
 {
     public function relations()
     {

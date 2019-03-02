@@ -8,8 +8,8 @@ use Phalcon\Mvc\Model\Relation;
 /**
  * Trait TModelWidgetOptionsRelations
  * @package Lib\Mvc\Model\WidgetOptions
- * @property ModelWidgets[] $widgets
- * @method ModelWidgets[] getWidgets()
+ * @property ModelWidgets $widget
+ * @method ModelWidgets getWidget()
  */
 trait TModelWidgetOptionsRelations
 {
@@ -20,7 +20,7 @@ trait TModelWidgetOptionsRelations
             ModelWidgets::class,
             'id',
             [
-                'alias' => 'Widgets',
+                'alias' => 'Widget',
                 'foreignKey' => [
                     'message' => 'The widget options cannot be deleted because other tables are using it',
                     'action'  => Relation::ACTION_CASCADE

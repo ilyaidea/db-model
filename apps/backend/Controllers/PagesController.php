@@ -3,6 +3,7 @@
 namespace Backend\Controllers;
 
 
+use Lib\Mvc\Model\PageCategory\ModelPageCategory;
 use Lib\Mvc\Model\Pages\ModelPages;
 use Phalcon\Mvc\Controller;
 
@@ -21,6 +22,17 @@ class PagesController extends Controller
         {
             die(print_r($page->getMessages()));
         }
+
+        die;
+    }
+    public function foreignKeyTestAction()
+    {
+        /** @var ModelPageCategory $category */
+        $category = ModelPageCategory::findFirst(1);
+
+        $page = $category->getPages()->toArray();
+
+        die(print_r($page));
 
         die;
     }

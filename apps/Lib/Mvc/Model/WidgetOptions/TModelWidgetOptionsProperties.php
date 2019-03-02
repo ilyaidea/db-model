@@ -6,8 +6,10 @@ trait TModelWidgetOptionsProperties
 {
     private $id;
     private $widget_id;
-    private $display;
-    private $width;
+    private $col_start;
+    private $col_end;
+    private $row_start;
+    private $row_end;
 
     /**
      * @return mixed
@@ -36,32 +38,66 @@ trait TModelWidgetOptionsProperties
     /**
      * @return mixed
      */
-    public function getDisplay()
+    public function getColStart()
     {
-        return $this->display;
+        return $this->col_start;
     }
 
     /**
-     * @param mixed $display
+     * @param mixed $col_start
      */
-    public function setDisplay( $display )
+    public function setColStart($col_start)
     {
-        $this->display = $display;
+        $this->col_start = $col_start;
     }
 
     /**
      * @return mixed
      */
-    public function getWidth()
+    public function getColEnd()
     {
-        return $this->width;
+        return $this->col_end;
     }
 
     /**
-     * @param mixed $width
+     * @param mixed $col_end
      */
-    public function setWidth( $width )
+    public function setColEnd($col_end)
     {
-        $this->width = $width;
+        $this->col_end = $col_end;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRowStart()
+    {
+        return $this->row_start;
+    }
+
+    /**
+     * @param mixed $row_start
+     */
+    public function setRowStart($row_start)
+    {
+        $this->row_start = $row_start;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRowEnd()
+    {
+        return $this->row_end;
+    }
+
+    /**
+     * @param mixed $row_end
+     */
+    public function setRowEnd($row_end)
+    {
+        $this->row_end = $row_end;
+    }
+
+
 }
