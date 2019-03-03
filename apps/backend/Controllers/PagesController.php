@@ -14,9 +14,9 @@ class PagesController extends Controller
         $page = new ModelPages();
 
         $page->setLanguageIso('fa');
-        $page->setTitle('عنوان سایت');
+        $page->setTitle('test1');
         $page->setTitleMenu('title menu');
-        $page->setSlug('s');
+        $page->setSlug('/jjj');
 
         if (!$page->save())
         {

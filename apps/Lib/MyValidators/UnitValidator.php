@@ -7,7 +7,12 @@ use Phalcon\Validation;
 
 /**
  * Check that a value has valid unit as it's suffix
- * @example  -22px , +0.7rem
+ *@example
+ *
+ * options:
+ *          signed => true : -22px
+ *          signed => false : 0.7rem
+ *
  * <code>
  *  $validator = new Validation();
  *
@@ -21,7 +26,7 @@ use Phalcon\Validation;
                     'cancelOnFail' => true,
                     'signed' => true
                 ]
-            )
+           )
         );
  *
  * validator->add(
@@ -35,24 +40,26 @@ use Phalcon\Validation;
                   [
                         'name' => ['px','rem'],
                         'value' => ['px','rem'],
-                   ],
+                  ],
                 'message' =>
                  [
                         'name' => 'my name regex error',
                         'value' => 'my value regex error'
-                    ],
+                 ],
                 "cancelOnFail" => true
             ]
         )
     );
- *
+ *</code>
+ * @param \Phalcon\Validation $validation
+ * @param string $field
+ * @return bool
  * @package Lib\MyValidators
  */
-class UnitValidator extends Validator\Regex implements Validation\ValidatorInterface
+class UnitValidator extends Validator\Regex
 {
     public function __construct($options = null)
     {
-
         //pass options to original constructor
         parent::__construct($options);
 

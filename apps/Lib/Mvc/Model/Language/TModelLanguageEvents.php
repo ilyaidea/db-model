@@ -7,39 +7,16 @@ trait TModelLanguageEvents
     public function beforeCreate()
     {
 
-       // $this->setOnlyOnePrimary();
-//        if(!$this->position)
-//            $this->position = $this->getUpperPosition() + 1;
-//
-//        if(!$this->is_primary)
-//            $this->is_primary = 0;
-//
-//        if($this->position)
-//        {
-//            $langPlusPosition = self::find([
-//                'conditions' => 'position >= '. $this->position
-//            ]);
-//
-//            foreach($langPlusPosition as $lang)
-//            {
-//                $lang->position = $lang->position + 1;
-//                $lang->update();
-//            }
-//        }
     }
 
     public function beforeUpdate()
     {
-        //        $cache = $this->getDI()->get('cache');
-        //        $cache->delete(self::cacheKey());
     }
 
     public function beforeDelete()
     {
         if($this->is_primary)
-        {
             return false;
-        }
     }
 
     public function beforeSave()
@@ -68,9 +45,6 @@ trait TModelLanguageEvents
 
     public function afterValidation()
     {
-//        if (!$this->position) {
-//            $this->position = $this->getUpperPosition();
-//        }
 
     }
 
