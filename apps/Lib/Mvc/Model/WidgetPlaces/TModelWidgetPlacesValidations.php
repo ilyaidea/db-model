@@ -38,13 +38,14 @@ trait TModelWidgetPlacesValidations
             'name',
             new StringLength(
                 [
+                    'min'=>2,
                     'max' => 45,
                     'messageMaximum' => ':field length is too long',
                     'cancelOnFail' => true
                 ]
             )
         );
-        $this->validator->setFilters('name',['trim','striptags','alphanum']);
+        $this->validator->setFilters('name',['trim','striptags']);
     }
     private function validationValue()
     {

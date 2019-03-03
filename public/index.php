@@ -17,7 +17,8 @@ class Application extends BaseApplication
          */
         $loader
             ->registerNamespaces([
-                'Lib\Mvc\Model' => __DIR__ . '/../apps/Lib/Mvc/Model'
+                'Lib\Mvc\Model' => __DIR__ . '/../apps/Lib/Mvc/Model',
+                'Lib' => __DIR__ . '/../apps/Lib/',
             ])
             ->registerDirs([__DIR__ . '/../apps/Lib/'])
             ->register();

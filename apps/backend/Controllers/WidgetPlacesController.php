@@ -4,9 +4,7 @@ namespace Backend\Controllers;
 
 
 use Lib\Mvc\Model\WidgetPlaces\ModelWidgetPlaces;
-use Lib\Mvc\Model\Widgets\ModelWidgets;
 use Phalcon\Mvc\Controller;
-use Phalcon\Mvc\Model\Transaction\Manager;
 
 class WidgetPlacesController extends Controller
 {
@@ -23,29 +21,16 @@ class WidgetPlacesController extends Controller
     public function addAction()
     {
         $widgetplace = new ModelWidgetPlaces();
-
-        $manager = new Manager();
-
-        $transaction = $manager->get();
-
-        $widgetplace->setTransaction($transaction);
-
-        $widgetplace->setName('left sidebar');
-        $widgetplace->setValue('left sidebar');
-
+        $widgetplace->setName('aa');
+        $widgetplace->setValue('shafieipiux');
         if (!$widgetplace->save())
         {
-            $transaction->rollback('rollback: can not save');
-
-            var_dump($widgetplace->getMessages());
+            die(print_r($widgetplace->getMessages()));
         }
+        else
+            echo 'saved';
 
-
-
-
-        $transaction->commit();
-
-
+        die;
     }
     public function updateAction()
     {
