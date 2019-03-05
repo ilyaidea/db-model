@@ -10,6 +10,7 @@ class ModelPages extends BaseModel
     use TModelPagesValidation;
     use TModelPagesEvents;
 
+
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      * Initialize Method
      */

@@ -51,11 +51,14 @@ class SlugValidator extends Regex
 
         $value = $validation->getValue($field);
 
+        if ($value == null)
+            $failed = true;
+
         $startWithSlash = $this->getOption('startWithSlash');
 
         $checkMaximumLength = strlen($value);
 
-        if ($checkMaximumLength >= 10)
+        if ($checkMaximumLength >= 255)
             $failed = true;
 
         if ($startWithSlash)

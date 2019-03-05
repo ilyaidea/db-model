@@ -5,6 +5,51 @@ namespace Lib\Mvc\Model;
 
 trait TraitSetPosition
 {
+
+    /**
+     * if position field is empty,this method sets position with
+     * Maximum position value plus 1
+     * @return void
+     */
+    public function setPositionIfEmpty()
+    {
+        if (!is_null($this->getPosition()))
+            return;
+
+        /** @var \Phalcon\Mvc\Model\Manager $modelManager */
+        $modelManager = $this->getModelsManager();
+
+        $position = $modelManager->createBuilder();
+
+        $position->columns('MAX(position) AS max');
+
+        $position->from(get_class($this));
+
+            if(method_exists($this,'getParentId'))
+            {
+                if($this->getParentId())
+                    $position->where('parent_id=:p:', ['p' => $this->getParentId()]);
+                else
+                    $position->where('parent_id IS NULL');
+            }
+
+
+        if($this->getId())
+            $position->andWhere('id <> :id:', ['id' => $this->getId()]);
+
+        if(method_exists($this,'getLanguageIso'))
+        {
+            $position->andWhere('language_iso = :lang:', ['lang' => $this->getLanguageIso()]);
+        }
+
+        $position = $position->getQuery()->getSingleResult();
+
+        $this->setPosition(1);
+        if($position->max)
+            $this->setPosition($position->max + 1);
+
+    }
+
     public function sortByPosition()
     {
         if (!method_exists($this,'setPosition'))
@@ -30,16 +75,17 @@ trait TraitSetPosition
 
         if(method_exists($this,'getLanguageIso'))
         {
-            $queryForSortPosition->andWhere('getLanguageIso=:lang:', ['lang' => $this->getLanguageIso()]);
+            $queryForSortPosition->andWhere('language_iso = :lang:', ['lang' => $this->getLanguageIso()]);
         }
 
-        if($this->isModeUpdate())
+        if($this->isModeCreate())
             $queryForSortPosition->orderBy('position ASC,created DESC');
         else
             $queryForSortPosition->orderBy('position ASC,modified DESC');
 
         $resultForSortPosition = $queryForSortPosition->getQuery()->execute();
 
+//        die(print_r($resultForSortPosition->toArray()));
         $this->iterateAndSaveNewPosition($resultForSortPosition);
     }
 
@@ -51,11 +97,12 @@ trait TraitSetPosition
     private function iterateAndSaveNewPosition($resultForSortPosition)
     {
         $i = 1;
-        foreach($resultForSortPosition as $resultForSortPosition)
+        foreach($resultForSortPosition as $rFSP)
         {
-            $class = get_class($this);
+//            $class = get_class($this);
 
-            $result = $class::findFirst($resultForSortPosition->id);
+            /** @var self $result */
+            $result = self::findFirst($rFSP->id);
 
             $result->setPosition($i);
 
@@ -63,7 +110,9 @@ trait TraitSetPosition
             {
                 foreach($result->getMessages() as $message)
                 {
-                    die(print_r($message->getMessage()));
+                    if (!empty($message)) {
+                        die(print_r($message->getMessage()));
+                    }
                 }
             }
             $i++;

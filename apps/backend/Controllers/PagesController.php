@@ -16,36 +16,50 @@ class PagesController extends Controller
         $page = new ModelPages();
 
         $page->setLanguageIso('fa');
-        $page->setTitle('fa_title_1_1');
+        $page->setTitle('fa_title_1_1_6');
         $page->setTitleMenu('title menu');
         $page->setParentId(1);
-        $page->setSlug('/jjj');
+       // $page->setPosition(45);
+        $page->setSlug('/test');
 
         if (!$page->save())
         {
             die(print_r($page->getMessages()));
         }
         else
-            die('saved');
+        {
+            $page->sortByPosition();
+            echo 'saved';
+
+        }
+
+        die;
 
     }
     public function updateAction()
     {
         /** @var ModelPages $page */
-        $page = ModelPages::findFirst(33);
+        $page = ModelPages::findFirst(90);
 
-//        $page->setTitle('en_title_1_1');
+        $page->setTitle('fa_title_1_1_4');
 
 //        $page->setLanguageIso('en');
 
-        $page->setSlug('/test');
+        //$page->setSlug('/test');
 
-//        $page->setParentId(null);
+        $page->setPosition(2);
+
+        $page->setParentId(1);
 
         if (!$page->update())
             die(print_r($page->getMessages()));
         else
-            die('updated');
+        {
+            $page->sortByPosition();
+            echo('updated');
+        }
+        die;
+
 
     }
     public function foreignKeyTestAction()

@@ -5,6 +5,8 @@ use Phalcon\Mvc\Model;
 
 class BaseModel extends Model
 {
+    use TraitSetPosition;
+
     private $modeCreate = false;
     private $modeUpdate = false;
 

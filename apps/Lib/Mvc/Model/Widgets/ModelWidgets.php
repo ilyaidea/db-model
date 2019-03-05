@@ -18,75 +18,75 @@ class ModelWidgets extends BaseModel
 
     }
 
-    /**
-     * if position field is empty,this method sets position with
-     * Maximum position value plus 1
-     * @return void
-     */
-    public function setPositionIfEmpty()
-    {
-        if (!is_null($this->getPosition()))
-            return;
+//    /**
+//     * if position field is empty,this method sets position with
+//     * Maximum position value plus 1
+//     * @return void
+//     */
+//    public function setPositionIfEmpty()
+//    {
+//        if (!is_null($this->getPosition()))
+//            return;
+//
+//        $queryMaxPosition = $this->getModelsManager()->createBuilder()
+//            ->columns('MAX(position) AS max')
+//            ->from(self::class)
+//            ->getQuery()
+//            ->getSingleResult();
+//
+//        $this->setPosition(1);
+//        if(is_numeric($queryMaxPosition->max))
+//            $this->setPosition($queryMaxPosition->max +1);
+//
+//    }
 
-        $queryMaxPosition = $this->getModelsManager()->createBuilder()
-            ->columns('MAX(position) AS max')
-            ->from(self::class)
-            ->getQuery()
-            ->getSingleResult();
-
-        $this->setPosition(1);
-        if(is_numeric($queryMaxPosition->max))
-            $this->setPosition($queryMaxPosition->max +1);
-
-    }
-
-    /**
-     * if is create mode: sorts position column ASC and created column DESC
-     * if is update mode: sorts position column ASC and modified column DESC
-     * @return void
-     */
-    public function sortByPosition()
-    {
-        $queryWidgetsForSortPosition = $this->getModelsManager()->createBuilder();
-        $queryWidgetsForSortPosition->columns(['id']);
-        $queryWidgetsForSortPosition->from(self::class);
-
-        if ($this->isModeCreate())
-            $queryWidgetsForSortPosition->orderBy('position ASC,created DESC');
-
-        if($this->isModeUpdate())
-            $queryWidgetsForSortPosition->orderBy('position ASC,modified DESC');
-
-        $widgetsForSortPosition = $queryWidgetsForSortPosition->getQuery()->execute();
-
-        $this->iterateAndSaveNewPosition($widgetsForSortPosition);
-    }
-
-    /**
-     * iterates in sorted array and updates their position with new value from i=1
-     * @param array $widgetsForSortPosition
-     * @return void
-     */
-    private function iterateAndSaveNewPosition($widgetsForSortPosition)
-    {
-        $i = 1;
-        foreach($widgetsForSortPosition as $widgetForSortPosition)
-        {
-            /** @var self $widget */
-            $widget = self::findFirst($widgetForSortPosition->id);
-
-            $widget->setPosition($i);
-
-            if(!$widget->update())
-            {
-                foreach($widget->getMessages() as $message)
-                {
-                    die(print_r($message->getMessage()));
-                }
-            }
-            $i++;
-        }
-    }
+//    /**
+//     * if is create mode: sorts position column ASC and created column DESC
+//     * if is update mode: sorts position column ASC and modified column DESC
+//     * @return void
+//     */
+//    public function sortByPosition()
+//    {
+//        $queryWidgetsForSortPosition = $this->getModelsManager()->createBuilder();
+//        $queryWidgetsForSortPosition->columns(['id']);
+//        $queryWidgetsForSortPosition->from(self::class);
+//
+//        if ($this->isModeCreate())
+//            $queryWidgetsForSortPosition->orderBy('position ASC,created DESC');
+//
+//        if($this->isModeUpdate())
+//            $queryWidgetsForSortPosition->orderBy('position ASC,modified DESC');
+//
+//        $widgetsForSortPosition = $queryWidgetsForSortPosition->getQuery()->execute();
+//
+//        $this->iterateAndSaveNewPosition($widgetsForSortPosition);
+//    }
+//
+//    /**
+//     * iterates in sorted array and updates their position with new value from i=1
+//     * @param array $widgetsForSortPosition
+//     * @return void
+//     */
+//    private function iterateAndSaveNewPosition($widgetsForSortPosition)
+//    {
+//        $i = 1;
+//        foreach($widgetsForSortPosition as $widgetForSortPosition)
+//        {
+//            /** @var self $widget */
+//            $widget = self::findFirst($widgetForSortPosition->id);
+//
+//            $widget->setPosition($i);
+//
+//            if(!$widget->update())
+//            {
+//                foreach($widget->getMessages() as $message)
+//                {
+//                    die(print_r($message->getMessage()));
+//                }
+//            }
+//            $i++;
+//        }
+//    }
 
     /**
      * finds objects in widgets database, whose place that match the specified value

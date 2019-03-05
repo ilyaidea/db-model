@@ -43,10 +43,14 @@ trait TModelPagesEvents
     }
     public function beforeSave()
     {
-//        if(!$this->getPosition() || !is_numeric($this->getPosition()))
-//        {
-//            $this->setPositionIfEmpty();
-//        }
+        if(!$this->getPosition() || !is_numeric($this->getPosition()))
+        {
+            $this->setPositionIfEmpty();
+        }
+    }
+    public function afterSave()
+    {
+        //$this->sortByPosition();
     }
 //    public function beforeValidation()
 //    {
