@@ -59,8 +59,8 @@ trait TModelPagesValidation
             'parent_id',
             new InclusionIn(
                 [
-                    'message' => 'the :field does not exist in Page model',
-                    'domain'  => array_column(self::find()->toArray(),'iso'),
+                    'message' => 'the :field is not in valid domain',
+                    'domain'  => self::findAllParentsByLang($this->getLanguageIso()),
                     'cancelOnFail' => true,
                     'allowEmpty' => true
                 ]
@@ -116,16 +116,44 @@ trait TModelPagesValidation
              )
          );
 
-         $this->validator->add(
-             'title',
-             new Uniqueness(
-                 [
-                     'message' => 'the :field is not unique',
-                     'model'   => self::class,
-                     'cancelOnFail' => true
+         $existedPage = null;
+         if ($this->getId())
+         {
+             $existedPage = self::findFirst([
+                 'columns' => 'id, title',
+                 'conditions' => 'id = :id:',
+                 'bind' => [
+                     'id' => $this->getId()
                  ]
-             )
-         );
+             ]);
+         }
+         
+         if(($existedPage && ($existedPage->title != $this->getTitle())) || (!$this->getId()))
+         {
+             $this->validator->add(
+                 'title',
+                 new Validation\Validator\ExclusionIn(
+                     [
+                         'message' => 'queryForUniqueness: the :field is not unique',
+                         'domain'   => self::queryForTitleUniqueness(),
+                         'cancelOnFail' => true
+                     ]
+                 )
+             );
+         }
+
+
+//         $this->validator->add(
+//             'parent_id',
+//             new Uniqueness(
+//                 [
+//                     'message' => '',
+//                     'model' => $this,
+//                     'parent_field' => 'parent_id',
+//                     'language_field' => 'language_iso',
+//                 ]
+//             )
+//         );
 
 //         $this->validator->add(
 //             'title',

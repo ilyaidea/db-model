@@ -14,8 +14,8 @@ trait TModelPagesProperties
     private $description;
     private $content;
     private $position;
-    private $created_at;
-    private $modified_in;
+    private $created;
+    private $modified;
 
     /**
      * @return mixed
@@ -109,38 +109,6 @@ trait TModelPagesProperties
     /**
      * @return mixed
      */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    /**
-     * @param mixed $created_at
-     */
-    public function setCreatedAt( $created_at )
-    {
-        $this->created_at = $created_at;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getModifiedIn()
-    {
-        return $this->modified_in;
-    }
-
-    /**
-     * @param mixed $modified_in
-     */
-    public function setModifiedIn( $modified_in )
-    {
-        $this->modified_in = $modified_in;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getSlug()
     {
         return $this->slug;
@@ -201,5 +169,39 @@ trait TModelPagesProperties
     {
         $this->description = $description;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param mixed $created
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getModified()
+    {
+        return $this->modified;
+    }
+
+    /**
+     * @param mixed $modified
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+    }
+
+
 
 }
