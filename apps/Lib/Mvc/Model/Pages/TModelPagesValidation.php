@@ -4,6 +4,7 @@ namespace Lib\Mvc\Model\Pages;
 
 use Lib\Mvc\Model\Language\ModelLanguage;
 use Lib\MyValidators\SlugValidator;
+use Lib\MyValidators\MyUniquenessValidator;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\InclusionIn;
 use Phalcon\Validation\Validator\Numericality;
@@ -132,39 +133,14 @@ trait TModelPagesValidation
          {
              $this->validator->add(
                  'title',
-                 new Validation\Validator\ExclusionIn(
+                 new MyUniquenessValidator(
                      [
-                         'message' => 'queryForUniqueness: the :field is not unique',
-                         'domain'   => self::queryForTitleUniqueness(),
-                         'cancelOnFail' => true
+                         'message' => '',
+                         'model' => $this
                      ]
                  )
              );
          }
-
-
-//         $this->validator->add(
-//             'parent_id',
-//             new Uniqueness(
-//                 [
-//                     'message' => '',
-//                     'model' => $this,
-//                     'parent_field' => 'parent_id',
-//                     'language_field' => 'language_iso',
-//                 ]
-//             )
-//         );
-
-//         $this->validator->add(
-//             'title',
-//             new Validation\Validator\Alpha(
-//                 [
-//                     'message' => 'the :field is not Alpha',
-//                     'cancelOnFail' => true
-//                 ]
-//             )
-//         );
-
      }
      private function validationTitleMenu()
     {

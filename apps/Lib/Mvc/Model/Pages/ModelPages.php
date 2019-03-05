@@ -65,9 +65,10 @@ class ModelPages extends BaseModel
                      [1] => fa_title_1_2
                      [2] => fa_title_1_3
      *          )
+     * @param string $field
      * @return array
      */
-    public function queryForTitleUniqueness()
+    public function queryForTitleUniqueness($field)
     {
         $parentId = $this->getParentId();
 
@@ -93,7 +94,7 @@ class ModelPages extends BaseModel
 
         $result = $result->getQuery()->execute();
 
-        return array_column($result->toArray(),'title');
+        return array_column($result->toArray(),$field);
     }
 
 }

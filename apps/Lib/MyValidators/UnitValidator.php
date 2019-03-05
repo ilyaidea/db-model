@@ -134,6 +134,14 @@ class UnitValidator extends Validator\Regex
                     $code
                 )
             );
+//            $message = $this->getOption('message');
+//            if (!$message) {
+//                //message was not provided, so set some default
+//                $message = "This date is not awesome!";
+//            }
+//
+//            //add message object
+//            $validator->appendMessage(new Message($message, $attribute, 'IsAwesomeDate'));
 
 			return false;
         }

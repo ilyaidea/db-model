@@ -51,7 +51,7 @@ class SlugValidator extends Regex
 
         $value = $validation->getValue($field);
 
-        if ($value == null)
+        if (!$value)
             $failed = true;
 
         $startWithSlash = $this->getOption('startWithSlash');

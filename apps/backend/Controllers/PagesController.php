@@ -15,9 +15,9 @@ class PagesController extends Controller
 
         $page = new ModelPages();
 
-        $page->setLanguageIso('fa');
-        $page->setTitle('fa_title_1_1_6');
-        $page->setTitleMenu('title menu');
+        $page->setLanguageIso('en');
+        $page->setTitle('title1_1_1');
+        $page->setTitleMenu('title menu_1');
         $page->setParentId(1);
        // $page->setPosition(45);
         $page->setSlug('/test');
