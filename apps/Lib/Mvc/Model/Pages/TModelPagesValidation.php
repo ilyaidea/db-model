@@ -5,23 +5,21 @@ namespace Lib\Mvc\Model\Pages;
 use Lib\Mvc\Model\Language\ModelLanguage;
 use Lib\MyValidators\SlugValidator;
 use Lib\MyValidators\MyUniquenessValidator;
-use Phalcon\Validation;
+use Lib\Validation;
 use Phalcon\Validation\Validator\InclusionIn;
 use Phalcon\Validation\Validator\Numericality;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\StringLength;
-use Phalcon\Validation\Validator\Uniqueness;
-use Phalcon\Validation\Validator\Regex;
 
+/**
+ * Trait TModelPagesValidation
+ * @package Lib\Mvc\Model\Pages
+ * @property Validation $validator
+ */
 trait TModelPagesValidation
 {
-    /** @var Validation $validator */
-    private $validator;
-
-    public function validation()
+    public function mainValidation()
     {
-        $this->validator = new Validation();
-
         $this->validationParentId();
 
         $this->validationLanguageIso();
@@ -39,9 +37,6 @@ trait TModelPagesValidation
         $this->validationContent();
 
         $this->validationPosition();
-
-        return $this->validate($this->validator);
-
     }
     private function validationParentId()
     {

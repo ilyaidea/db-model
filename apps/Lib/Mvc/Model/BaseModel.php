@@ -1,6 +1,7 @@
 <?php
 namespace Lib\Mvc\Model;
 
+use Lib\Validation;
 use Phalcon\Mvc\Model;
 
 class BaseModel extends Model
@@ -9,6 +10,9 @@ class BaseModel extends Model
 
     private $modeCreate = false;
     private $modeUpdate = false;
+
+    /** @var Validation */
+    protected $validator;
 
 
     public function initialize()
@@ -59,5 +63,23 @@ class BaseModel extends Model
     public function getTransaction()
     {
         return $this->_transaction;
+    }
+
+    public function validation()
+    {
+        $this->validator = new Validation();
+
+        if(method_exists($this, 'customValidators'))
+            $this->customValidators();
+
+        if(method_exists($this, 'mainValidation'))
+            $this->mainValidation();
+
+        return $this->validate($this->validator);
+    }
+
+    public function customValidators()
+    {
+
     }
 }
