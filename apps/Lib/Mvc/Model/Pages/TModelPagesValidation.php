@@ -3,25 +3,23 @@ namespace Lib\Mvc\Model\Pages;
 
 
 use Lib\Mvc\Model\Language\ModelLanguage;
-use Lib\MyValidators\SlugValidator;
-use Lib\MyValidators\MyUniquenessValidator;
-use Phalcon\Validation;
+use Lib\Validation\Validator\SlugValidator;
+use Lib\Validation\Validator\MyUniquenessValidator;
+use Lib\Validation;
 use Phalcon\Validation\Validator\InclusionIn;
 use Phalcon\Validation\Validator\Numericality;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\StringLength;
-use Phalcon\Validation\Validator\Uniqueness;
-use Phalcon\Validation\Validator\Regex;
 
+/**
+ * Trait TModelPagesValidation
+ * @package Lib\Mvc\Model\Pages
+ * @property Validation $validator
+ */
 trait TModelPagesValidation
 {
-    /** @var Validation $validator */
-    private $validator;
-
-    public function validation()
+    public function mainValidation()
     {
-        $this->validator = new Validation();
-
         $this->validationParentId();
 
         $this->validationLanguageIso();
@@ -39,9 +37,6 @@ trait TModelPagesValidation
         $this->validationContent();
 
         $this->validationPosition();
-
-        return $this->validate($this->validator);
-
     }
     private function validationParentId()
     {
@@ -100,7 +95,7 @@ trait TModelPagesValidation
              'title',
              new PresenceOf(
                  [
-                     'message' => 'the :field is required',
+                     'message' => 'the :field is requiredd',
                      'cancelOnFail' => true
                  ]
              )
@@ -134,10 +129,14 @@ trait TModelPagesValidation
              $this->validator->add(
                  'title',
                  new MyUniquenessValidator(
-                     [
-                         'message' => '',
-                         'model' => $this
-                     ]
+                      [
+                          'message' => '',
+                          'exclusionDomain' => ['home','page'],
+                          'model' => $this,
+                          'parentCheck' => true,
+                          'languageCheck' => true,
+                          'cancelOnFail' => true
+                      ]
                  )
              );
          }

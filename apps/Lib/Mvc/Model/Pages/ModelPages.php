@@ -54,47 +54,4 @@ class ModelPages extends BaseModel
         return array_column($findAllParentsByLang, 'id');
     }
 
-    /**
-     * return array of titles whose parent and language are equal
-     * we use it for title exclusionIn validation
-     * @example
-     *  inputted language : 'fa'
-     *  inputted parent_id : 1
-     *      array(
-     *               [0] => fa_title_1_1
-                     [1] => fa_title_1_2
-                     [2] => fa_title_1_3
-     *          )
-     * @param string $field
-     * @return array
-     */
-    public function queryForTitleUniqueness($field)
-    {
-        $parentId = $this->getParentId();
-
-        $language = $this->getLanguageIso();
-
-        $result = $this->getModelsManager()->createBuilder()
-            ->from(self::class);
-
-        if ($parentId  && method_exists($this,'getParentId') )
-        {
-            $result->where(' parent_id = :parentId:',
-                ['parentId'=>$parentId]);
-        }
-        else
-        {
-            $result->where(' parent_id IS NULL');
-
-        }
-        if ($language && method_exists($this,'getLanguageIso'))
-        {
-            $result->andWhere('language_iso = :lang:',[ 'lang'=> $language ]);
-        }
-
-        $result = $result->getQuery()->execute();
-
-        return array_column($result->toArray(),$field);
-    }
-
 }

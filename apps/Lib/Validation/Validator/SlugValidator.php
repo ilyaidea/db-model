@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\MyValidators;
+namespace Lib\Validation\Validator;
 
 
 use Phalcon\Validation;
