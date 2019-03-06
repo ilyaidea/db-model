@@ -5,9 +5,20 @@ use Phalcon\Mvc\Model;
 
 class BaseModel extends Model
 {
+    use TraitSetPosition;
+
     private $modeCreate = false;
     private $modeUpdate = false;
 
+
+    public function initialize()
+    {
+        if(method_exists($this,'init'))
+            $this->init();
+
+        if(method_exists($this,'relations'))
+            $this->relations();
+    }
     /**
      * @return bool
      */

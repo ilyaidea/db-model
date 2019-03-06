@@ -1,12 +1,13 @@
 <?php
-namespace Lib\Mvc\Model\PageDesign;
+
+namespace Lib\Mvc\Model\PageCategoryMap;
 
 
-trait TModelPageDesignProperties
+trait TModelPageCategoryMapProperties
 {
     private $id;
     private $page_id;
-    private $template;
+    private $page_category_id;
 
     /**
      * @return mixed
@@ -15,7 +16,6 @@ trait TModelPageDesignProperties
     {
         return $this->id;
     }
-
     /**
      * @return mixed
      */
@@ -27,7 +27,7 @@ trait TModelPageDesignProperties
     /**
      * @param mixed $page_id
      */
-    public function setPageId( $page_id )
+    public function setPageId($page_id)
     {
         $this->page_id = $page_id;
     }
@@ -35,16 +35,19 @@ trait TModelPageDesignProperties
     /**
      * @return mixed
      */
-    public function getTemplate()
+    public function getPageCategoryId()
     {
-        return $this->template;
+        return $this->page_category_id;
     }
 
     /**
-     * @param mixed $template
+     * @param mixed $page_category_id
      */
-    public function setTemplate( $template )
+    public function setPageCategoryId($page_category_id)
     {
-        $this->template = $template;
+        $this->page_category_id = $page_category_id;
     }
+
+
+
 }

@@ -2,10 +2,28 @@
 namespace Lib\Mvc\Model\Pages;
 
 
-use Modules\System\Native\Models\Language\ModelLanguage;
+
+use Lib\Mvc\Model\Language\ModelLanguage;
 
 trait TModelPagesQueries
 {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Get page by slug and local language
      * @param string $slug

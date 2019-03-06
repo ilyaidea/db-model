@@ -5,6 +5,12 @@ namespace Lib\Mvc\Model\WidgetOptions;
 use Lib\Mvc\Model\Widgets\ModelWidgets;
 use Phalcon\Mvc\Model\Relation;
 
+/**
+ * Trait TModelWidgetOptionsRelations
+ * @package Lib\Mvc\Model\WidgetOptions
+ * @property ModelWidgets $widget
+ * @method ModelWidgets getWidget()
+ */
 trait TModelWidgetOptionsRelations
 {
     protected function relations()
@@ -16,7 +22,7 @@ trait TModelWidgetOptionsRelations
             [
                 'alias' => 'Widget',
                 'foreignKey' => [
-                    'message' => 'The widget_id does not exist on the Widget model',
+                    'message' => 'The widget options cannot be deleted because other tables are using it',
                     'action'  => Relation::ACTION_CASCADE
                 ]
             ]

@@ -1,7 +1,9 @@
 <?php
 
-namespace Ad\Backend\Controllers;
+namespace Backend\Controllers;
 
+use Lib\Mvc\Model\Language\ModelLanguage;
+use Lib\Mvc\Model\Pages\ModelPages;
 use Lib\Mvc\Model\Widgets\ModelWidgets;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Model\Transaction;
@@ -53,10 +55,7 @@ class WidgetsController extends Controller
         $w->setName('posssss');
         $w->setPlace('bb');
         $w->setPosition(3);
-        $w->setRoute_name('route');
         $w->setNamespace('name space');
-        $w->setDisplay('block');
-        $w->setWidth("33.64px");
 
         $w->setTransaction($transaction);
 

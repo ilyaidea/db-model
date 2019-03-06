@@ -4,40 +4,67 @@ namespace Lib\Mvc\Model\Pages;
 
 trait TModelPagesEvents
 {
-    public function beforeValidation()
+    public function beforeUpdate()
     {
-        if($this->getLanguage() == null)
-        {
-            $this->setLanguage($this->getDI()->getShared('helper')->locale()->getLanguage());
-        }
-
-        if(!$this->getSlug() && $this->getTitle())
-        {
-            $this->setSlug(str_replace(' ', '-', $this->getTitle()));
-        }
-
+        $this->setModeUpdate(true);
+        $this->setModified(date('Y-m-d H:i:s'));
     }
 
     public function beforeCreate()
     {
-        $this->create_mode = true;
-        $this->setCreatedAt(date('Y-m-d H:i:s'));
+        $this->setModeCreate(true);
+        $this->setCreated(date('Y-m-d H:i:s'));
     }
 
-    public function beforeUpdate()
+    public function beforeValidation()
     {
-        $this->updat_mode = true;
-        $this->setModifiedIn(date('Y-m-d H:i:s'));
-    }
+        $parentId = $this->getParentId();
 
+        $language = $this->getLanguageIso();
+
+        if ($parentId)
+        {
+            //بررسی اینکه عنوان پدرش با عنوان خودش برابر نباشد
+            $parentTitle = self::findFirst(
+                [
+                    'columns' => 'title',
+                    'conditions' =>'id = ?1 AND language_iso = ?2',
+                    'bind' => [
+                        1 => $parentId,
+                        2 => $language,
+                    ],
+                ]
+            );
+            if ($this->getTitle() == $parentTitle['title'])
+            {
+                die('this is parent\'s title ! ' );
+            }
+        }
+    }
     public function beforeSave()
     {
-        if (!$this->getPosition() || !is_numeric($this->getPosition()))
+        if(!$this->getPosition() || !is_numeric($this->getPosition()))
+        {
             $this->setPositionIfEmpty();
-
-        if ($this->getSlug())
-
-            $this->findRoutesBySlug();
+        }
     }
+    public function afterSave()
+    {
+        //$this->sortByPosition();
+    }
+//    public function beforeValidation()
+//    {
+//        if($this->getLanguage() == null)
+//        {
+//            $this->setLanguage($this->getDI()->getShared('helper')->locale()->getLanguage());
+//        }
+//
+//        if(!$this->getSlug() && $this->getTitle())
+//        {
+//            $this->setSlug(str_replace(' ', '-', $this->getTitle()));
+//        }
+//
+//    }
+//
 
 }

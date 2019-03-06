@@ -12,15 +12,15 @@ class Application extends BaseApplication
     protected function registerLoaders()
     {
         $loader = new Loader();
-
         /**
          * We're a registering a set of directories taken from the configuration file
          */
         $loader
             ->registerNamespaces([
-                'Lib\Mvc\Model' => __DIR__ . '/../apps/Lib/Mvc/Model'
+                'Lib\Mvc\Model' => __DIR__ . '/../apps/Lib/Mvc/Model',
+                'Lib' => __DIR__ . '/../apps/Lib/',
             ])
-            ->registerDirs([__DIR__ . '/../apps/library/'])
+            ->registerDirs([__DIR__ . '/../apps/Lib/'])
             ->register();
 
 
@@ -62,12 +62,8 @@ class Application extends BaseApplication
 
         // Register the installed modules
         $this->registerModules([
-            'frontend' => [
-                'className' => 'Ad\Frontend\Module',
-                'path'      => '../apps/frontend/Module.php'
-            ],
             'backend'  => [
-                'className' => 'Ad\Backend\Module',
+                'className' => 'Backend\Module',
                 'path'      => '../apps/backend/Module.php'
             ]
         ]);
