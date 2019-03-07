@@ -91,6 +91,10 @@ trait TModelPagesValidation
     }
      private function validationTitle()
      {
+//         $this->validator->add('title',
+//             new Validation\Validator\NameSpaceValidator());
+
+
          $this->validator->add(
              'title',
              new PresenceOf(
