@@ -5,7 +5,7 @@ namespace Lib\Mvc\Model\Pages;
 
 use Lib\Mvc\Model\Language\ModelLanguage;
 use Lib\Validation\Validator\SlugValidator;
-use Lib\Validation\Validator\MyUniquenessValidator;
+use Lib\Validation\Validator\MyUniqueness;
 use Lib\Validation;
 use Phalcon\Validation\Validator\InclusionIn;
 use Phalcon\Validation\Validator\Numericality;
@@ -121,7 +121,7 @@ trait TModelPagesValidation
         {
             $this->validator->add(
                 'title',
-                new MyUniquenessValidator(
+                new MyUniqueness(
                     [
                         'message'         => '',
                         'exclusionDomain' => [ 'home', 'page' ],
