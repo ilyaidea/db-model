@@ -4,8 +4,8 @@ namespace Lib\Mvc\Model\Pages;
 
 
 use Lib\Mvc\Model\Language\ModelLanguage;
-use Lib\MyValidators\SlugValidator;
-use Lib\MyValidators\MyUniquenessValidator;
+use Lib\Validation\Validator\SlugValidator;
+use Lib\Validation\Validator\MyUniquenessValidator;
 use Lib\Validation;
 use Phalcon\Validation\Validator\InclusionIn;
 use Phalcon\Validation\Validator\Numericality;
@@ -105,17 +105,6 @@ trait TModelPagesValidation
             )
         );
 
-        $this->validator->add(
-            'title',
-            new StringLength(
-                [
-                    'max'            => 100,
-                    'messageMaximum' => ':field length is too long',
-                    'cancelOnFail'   => true
-                ]
-            )
-        );
-
         $existedPage = null;
         if( $this->getId() )
         {
@@ -134,8 +123,12 @@ trait TModelPagesValidation
                 'title',
                 new MyUniquenessValidator(
                     [
-                        'message' => '',
-                        'model'   => $this
+                        'message'         => '',
+                        'exclusionDomain' => [ 'home', 'page' ],
+                        'model'           => $this,
+                        'parentCheck'     => true,
+                        'languageCheck'   => true,
+                        'cancelOnFail'    => true
                     ]
                 )
             );

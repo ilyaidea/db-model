@@ -16,10 +16,10 @@ class PagesController extends Controller
         $page = new ModelPages();
 
         $page->setLanguageIso('en');
-        $page->setTitle('title1_1_1');
+        $page->setTitle('title');
         $page->setTitleMenu('title menu_1');
         $page->setParentId(1);
-       // $page->setPosition(45);
+       // $page->setPosition(1);
         $page->setSlug('/test');
 
         if (!$page->save())
