@@ -15,6 +15,4 @@ class ModelLanguage extends BaseModel
         $this->setSource('ilya_language');
     }
 
-
-
 }

@@ -5,3 +5,5 @@ ER/ER\.mwb\.bak
 ER/
 
 *.xml
+
+/vendor/

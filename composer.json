@@ -1,0 +1,14 @@
+{
+    "name": "webhouse/db-model",
+    "authors": [
+        {
+            "name": "farzaneh shafiei",
+            "email": "farzaneh7290@gmail.com"
+        }
+    ],
+    "require": {},
+
+    "require-dev": {
+        "phalcon/devtools": "~3.4"
+    }
+}
