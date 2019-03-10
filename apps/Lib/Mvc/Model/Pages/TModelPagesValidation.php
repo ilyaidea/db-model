@@ -128,7 +128,8 @@ trait TModelPagesValidation
                         'model'           => $this,
                         'parentCheck'     => true,
                         'languageCheck'   => true,
-                        'cancelOnFail'    => true
+                        'cancelOnFail'    => true,
+                        'code' => 5
                     ]
                 )
             );

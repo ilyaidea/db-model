@@ -13,7 +13,6 @@ class MyUniqueness extends \Lib\Validation\Validator
 {
     /** @var \Phalcon\Mvc\Model $model  */
     private $model;
-    private $validation;
     private $parentCheck;
     private $languageCheck;
     private $exclusionDomain;
@@ -51,17 +50,14 @@ class MyUniqueness extends \Lib\Validation\Validator
      */
     public function validate(Validation $validation, $field)
     {
-        $this->validation = $validation;
-
         if (in_array($validation->getValue($field), $this->exclusionDomain))
             return true;
 
-        if (method_exists($this->model, 'get'.Text::camelize($this->parentField)) && method_exists($this->model, 'get'. Text::camelize($this->languageField)))
+       if ($this->parentCheck && $this->languageCheck)
         {
             if (!$this->checkNameNotEqualsParentName($validation, $field))
                 return false;
         }
-
         $this->myValidation->add(
             $field,
             new Validator\ExclusionIn([
@@ -74,7 +70,10 @@ class MyUniqueness extends \Lib\Validation\Validator
             return true;
 
         foreach ($messages as $message)
-            $validation->appendMessage($message);
+        {
+            $this->setErrorMessage($validation,$field,$message->getMessage());
+        }
+
 
         return false;
     }
@@ -128,16 +127,15 @@ class MyUniqueness extends \Lib\Validation\Validator
         {
             $parentId = $this->model->{'get'.Text::camelize($this->parentField)}();
             if ($parentId)
-                $result->andWhere('parent_id = :parentId:', ['parentId' => $parentId]);
+                $result->andWhere($this->parentField.' = :parentId:', ['parentId' => $parentId]);
             else
-                $result->andWhere('parent_id IS NULL');
+                $result->andWhere($this->parentField.' IS NULL');
         }
-        if ($this->languageCheck && method_exists($this->model, 'get'.Text::camelize($this->languageField)))
+        if ($this->checkLanguage())
         {
             $language = $this->model->{'get'.Text::camelize($this->languageField)}();
-            $result->andWhere('language_iso = :lang:', ['lang' => $language]);
+            $result->andWhere($this->languageField.'= :lang:', ['lang' => $language]);
         }
-
         return array_column($result->getQuery()->execute()->toArray(), $field);
     }
 
@@ -158,6 +156,7 @@ class MyUniqueness extends \Lib\Validation\Validator
 
         if (!$this->checkParent())
         {
+
             $this->setErrorMessage(
                 $validation,
                 $field,
@@ -166,7 +165,7 @@ class MyUniqueness extends \Lib\Validation\Validator
             return false;
         }
 
-        $parentId = $this->model->get{Text::camelize($this->parentField)}();
+        $parentId = $this->model->{'get'.Text::camelize($this->parentField)}();
 
         if(!$parentId)
             return true;
@@ -181,7 +180,7 @@ class MyUniqueness extends \Lib\Validation\Validator
             return false;
         }
 
-        $language = $this->model->get{Text::camelize($this->languageField)}();
+        $language = $this->model->{'get'.Text::camelize($this->languageField)}();
 
         if (!$language)
         {
@@ -196,7 +195,7 @@ class MyUniqueness extends \Lib\Validation\Validator
         $parent = $this->model->findFirst(
             [
                 'columns' => $field,
-                'conditions' => 'id = ?1 AND language_iso = ?2',
+                'conditions' => "id = ?1 AND {$this->languageField} = ?2",
                 'bind' => [
                     1 => $parentId,
                     2 => $language,
