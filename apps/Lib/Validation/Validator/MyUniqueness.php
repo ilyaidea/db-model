@@ -6,10 +6,11 @@ use Phalcon\Exception;
 use Phalcon\Text;
 use Phalcon\Validation\Message;
 use Phalcon\Validation;
-use Phalcon\Validation\Validator;
+use Lib\Validation\Validator;
+use Phalcon\Validation\Validator\ExclusionIn;
 use Phalcon\ValidationInterface;
 
-class MyUniqueness extends \Lib\Validation\Validator
+class MyUniqueness extends Validator
 {
     /** @var \Phalcon\Mvc\Model $model  */
     private $model;
@@ -19,6 +20,7 @@ class MyUniqueness extends \Lib\Validation\Validator
     private $myValidation;
     private $parentField;
     private $languageField;
+    private $inputtedMessage;
 
     public function __construct( array $options = null )
     {
@@ -36,6 +38,8 @@ class MyUniqueness extends \Lib\Validation\Validator
 
         $this->exclusionDomain = $this->getOption('exclusionDomain', []);
 
+        $this->inputtedMessage = $this->getOption('message',null);
+
         $this->myValidation = new Validation();
 
     }
@@ -50,29 +54,36 @@ class MyUniqueness extends \Lib\Validation\Validator
      */
     public function validate(Validation $validation, $field)
     {
-        if (in_array($validation->getValue($field), $this->exclusionDomain))
+        if ($this->checkExclusionDomain($validation,$field))
             return true;
 
-       if ($this->parentCheck && $this->languageCheck)
-        {
-            if (!$this->checkNameNotEqualsParentName($validation, $field))
-                return false;
-        }
+        if (!$this->checkNameNotEqualsParentName($validation, $field))
+            return false;
+
+
         $this->myValidation->add(
             $field,
-            new Validator\ExclusionIn([
-                'domain' => $this->queryForFieldUniqueness($field),
-                'message' => 'exclusion error',
-            ]));
+            new ExclusionIn(
+                [
+                    'domain' => $this->queryForFieldUniqueness($field),
+                    'message' => 'This title is in the invalid domain',
+                ]
+            ));
 
-        $messages = $this->myValidation->validate(null, $this->model);
-        if(is_bool($messages))
+        $validationMessages = $this->myValidation->validate(null, $this->model);
+
+        if(is_bool($validationMessages))
             return true;
 
-        foreach ($messages as $message)
+        if (!$this->inputtedMessage)
         {
-            $this->setErrorMessage($validation,$field,$message->getMessage());
+            foreach ($validationMessages as $message)
+            {
+                $this->setErrorMessage($validation,$field,$message->getMessage());
+            }
         }
+        else
+            $this->setErrorMessage($validation,$field,$this->inputtedMessage);
 
 
         return false;
@@ -83,7 +94,7 @@ class MyUniqueness extends \Lib\Validation\Validator
      * @param $field
      * @param null $message
      */
-    protected function setErrorMessage(ValidationInterface $validation, $field, $message = null)
+    protected function setErrorMessage(Validation $validation, $field, $message = null)
     {
         $label = $this->prepareLabel($validation, $field);
 
@@ -91,6 +102,7 @@ class MyUniqueness extends \Lib\Validation\Validator
             $message = $this->prepareMessage($validation, $field, "MyUniqueness");
 
         $code = $this->prepareCode($field);
+
         $replacePairs = [":field" => $label];
 
         $validation->appendMessage(
@@ -101,6 +113,14 @@ class MyUniqueness extends \Lib\Validation\Validator
                 $code
             )
         );
+    }
+
+    protected function checkExclusionDomain(ValidationInterface $validation ,$field)
+    {
+        if (in_array($validation->getValue($field), $this->exclusionDomain))
+            return true;
+
+        return false;
     }
 
     /**
@@ -123,22 +143,37 @@ class MyUniqueness extends \Lib\Validation\Validator
             ->columns([$field])
             ->from(get_class($this->model));
 
-        if ($this->checkParent())
+        if ($this->parentCheck())
         {
-            $parentId = $this->model->{'get'.Text::camelize($this->parentField)}();
+            $parentId =  $this->model->{$this->createMethodName($this->parentField)}();
+
             if ($parentId)
                 $result->andWhere($this->parentField.' = :parentId:', ['parentId' => $parentId]);
             else
                 $result->andWhere($this->parentField.' IS NULL');
         }
-        if ($this->checkLanguage())
+        if ($this->languageCheck())
         {
-            $language = $this->model->{'get'.Text::camelize($this->languageField)}();
+            $language = $this->model->{$this->createMethodName($this->languageField)}();
+
             $result->andWhere($this->languageField.'= :lang:', ['lang' => $language]);
         }
         return array_column($result->getQuery()->execute()->toArray(), $field);
     }
 
+    /**
+     * create standard method name
+     * @example getParentId , getLanguageIso
+     * @param $methodName
+     * @return string
+     */
+    protected function createMethodName($methodName)
+    {
+        /** @var string $methodFullName */
+        $methodFullName = 'get'.Text::camelize($methodName);
+
+        return $methodFullName;
+    }
     /**
      * compare value of inputted title with parent's title in the model.with same language
      * return false if they are equal.
@@ -146,41 +181,37 @@ class MyUniqueness extends \Lib\Validation\Validator
      * @param string $field
      * @return bool
      */
-    public function checkNameNotEqualsParentName(ValidationInterface $validation, $field)
+    public function checkNameNotEqualsParentName(Validation $validation, $field)
     {
-        if(!$this->parentCheck)
-            return true;
-
         $parentId = null;
         $language = null;
 
-        if (!$this->checkParent())
+        if (!$this->parentCheck())
         {
-
             $this->setErrorMessage(
                 $validation,
                 $field,
-                'If parentCheck == true Why Method (get'.Text::camelize($this->parentField). ') does not exist in '. get_class($this->model)
+                "If parentCheck == true Why Method ({$this->createMethodName($this->parentField)}) does not exist in ". get_class($this->model)
             );
             return false;
         }
 
-        $parentId = $this->model->{'get'.Text::camelize($this->parentField)}();
+        $parentId = $this->model->{$this->createMethodName($this->parentField)}();
 
         if(!$parentId)
             return true;
 
-        if (!$this->checkLanguage())
+        if (!$this->languageCheck())
         {
             $this->setErrorMessage(
                 $validation,
                 $field,
-                'If languageCheck == true Why Method (get'.Text::camelize($this->languageField). ') does not exist in '. get_class($this->model)
+                "If languageCheck == true Why Method ({$this->createMethodName($this->languageField)}) does not exist in". get_class($this->model)
             );
             return false;
         }
 
-        $language = $this->model->{'get'.Text::camelize($this->languageField)}();
+        $language = $this->model->{$this->createMethodName($this->languageField)}();
 
         if (!$language)
         {
@@ -192,18 +223,7 @@ class MyUniqueness extends \Lib\Validation\Validator
             return false;
         }
 
-        $parent = $this->model->findFirst(
-            [
-                'columns' => $field,
-                'conditions' => "id = ?1 AND {$this->languageField} = ?2",
-                'bind' => [
-                    1 => $parentId,
-                    2 => $language,
-                ],
-            ]
-        );
-
-        if ($validation->getValue($field) == $parent->{$field})
+        if ($this->checkParentName($validation,$field,$parentId,$language))
         {
             $this->setErrorMessage(
                 $validation,
@@ -216,17 +236,54 @@ class MyUniqueness extends \Lib\Validation\Validator
         return true;
     }
 
-    protected function checkParent()
+    /**
+     * find parent's title (findFirst DB) and compare with value of field
+     * if both of them are equal , return true.
+     * @param \Phalcon\Validation $validation
+     * @param $field
+     * @param $parentId
+     * @param $language
+     * @return bool
+     */
+    protected function checkParentName(Validation $validation,$field,$parentId,$language)
     {
-        if($this->parentCheck && method_exists($this->model, 'get'.Text::camelize($this->parentField)))
+        $parent = $this->model->findFirst(
+            [
+                'columns' => $field,
+                'conditions' => "id = ?1 AND {$this->languageField} = ?2",
+                'bind' => [
+                    1 => $parentId,
+                    2 => $language,
+                ],
+            ]
+        );
+
+        $equal = $validation->getValue($field) == $parent->{$field};
+        if ($equal)
             return true;
 
         return false;
     }
 
-    protected function checkLanguage()
+    /**
+     * if parentCheck option is true & getParentId method is existed return true
+     * @return bool
+     */
+    protected function parentCheck()
     {
-        if($this->languageCheck && method_exists($this->model, 'get'.Text::camelize($this->languageField)))
+        if($this->parentCheck && method_exists($this->model, $this->createMethodName($this->parentField)))
+            return true;
+
+        return false;
+    }
+
+    /**
+     * if languageCheck option is true & getLanguageIso method is existed return true
+     * @return bool
+     */
+    protected function languageCheck()
+    {
+        if($this->languageCheck && method_exists($this->model, $this->createMethodName($this->languageField)))
             return true;
 
         return false;

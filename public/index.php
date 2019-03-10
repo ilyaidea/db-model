@@ -6,7 +6,7 @@ use Phalcon\DI\FactoryDefault;
 
 
     define('BASE_PATH', dirname(__DIR__));
-    define('APP_PATH', BASE_PATH . '/app');
+    define('APP_PATH', BASE_PATH . '/apps');
     define( 'PROJECT_NAME', basename( BASE_PATH ) );
 
     $di = new FactoryDefault();
@@ -42,6 +42,3 @@ $application->registerModules([
 
         die;
     }
-
-//    $application = new Application();
-//    $application->main();
