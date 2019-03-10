@@ -2,75 +2,46 @@
 
 error_reporting(E_ALL);
 
-use Phalcon\Loader;
-use Phalcon\Mvc\Router;
 use Phalcon\DI\FactoryDefault;
-use Phalcon\Mvc\Application as BaseApplication;
-
-class Application extends BaseApplication
-{
-    protected function registerLoaders()
-    {
-        $loader = new Loader();
-        /**
-         * We're a registering a set of directories taken from the configuration file
-         */
-        $loader
-            ->registerNamespaces([
-                'Lib\Mvc\Model' => __DIR__ . '/../apps/Lib/Mvc/Model',
-                'Lib' => __DIR__ . '/../apps/Lib/',
-            ])
-            ->registerDirs([__DIR__ . '/../apps/Lib/'])
-            ->register();
 
 
-    }
-    /**
-     * Register the services here to make them general or register in the ModuleDefinition to make them module-specific
-     */
-    protected function registerServices()
-    {
+    define('BASE_PATH', dirname(__DIR__));
+    define('APP_PATH', BASE_PATH . '/app');
+    define( 'PROJECT_NAME', basename( BASE_PATH ) );
 
-        $di = new FactoryDefault();
+    $di = new FactoryDefault();
 
-        // Registering a router
-        $di->set('router', function () {
+    include APP_PATH . '/config/loader.php';
 
-            $router = new Router();
+    include APP_PATH . "/config/services.php";
 
-          $router->setDefaultModule("backend");
-
-            $router->add('/:controller/:action', [
-                'module'     => 'backend',
-                'controller' => 1,
-                'action'     => 2,
-            ])->setName('backend');
+    $config = $di->getConfig();
 
 
-            return $router;
-        });
+    $application = new \Phalcon\Mvc\Application($di);
 
-        $this->setDI($di);
-    }
-
-    public function main()
-    {
-
-        $this->registerLoaders();
-
-        $this->registerServices();
-
-        // Register the installed modules
-        $this->registerModules([
+// Register the installed modules
+$application->registerModules([
             'backend'  => [
                 'className' => 'Backend\Module',
-                'path'      => '../apps/backend/Module.php'
+                'path'      => APP_PATH.'/backend/Module.php'
             ]
         ]);
+    echo $application->handle()->getContent();
 
-        echo $this->handle()->getContent();
+
+    function dump($value)
+    {
+        if(is_array($value) || is_object($value))
+        {
+            print_r($value);
+        }
+        else{
+            print $value;
+        }
+
+        die;
     }
-}
 
-$application = new Application();
-$application->main();
+//    $application = new Application();
+//    $application->main();

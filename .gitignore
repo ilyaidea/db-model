@@ -5,3 +5,10 @@ ER/ER\.mwb\.bak
 ER/
 
 *.xml
+
+/vendor/
+
+composer*
+!composer.json
+
+composer\.lock
