@@ -34,7 +34,6 @@ class AssetManager extends Component
 //            $this->jsmin->add('assets/jquery/dist/jquery.min.js');
 //        }
 
-        dump($this->assetCollection->getCodes());
         /** @var Resource $resource */
         foreach($this->assetCollection->getResources() as $resource)
         {

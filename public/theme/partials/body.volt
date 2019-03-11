@@ -1,7 +1,7 @@
 {# body() #}
 <body class="ilya-container">
     <header class="header">
-        {{ partial('widgets/check-and-show', ['place': 'header','color': collor]) }}
+        {{ partial('widgets/check-and-show', ['place': 'header']) }}
     </header>
 
     <section class="all-main">
