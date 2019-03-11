@@ -16,7 +16,7 @@ class AfterRender extends Plugin
     protected function getHashKey()
     {
         return
-            'jkfdfjdk@3#fjfjkdfkd'.
+            'ajkdwslfejgke'.
             md5(
                 $this->router->getRewriteUri()
             );

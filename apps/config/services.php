@@ -8,10 +8,18 @@ $di->setShared('config',function () {
 );
 
 $config = $di->getShared('config');
+$di->set('url', function() use ($config)
+{
+    $url = new \Phalcon\Mvc\Url();
+    $url->setBaseUri($config->application->baseUri);
+    $url->setStaticBaseUri($config->application->baseUri);
+    $url->setBasePath($config->application->baseUri);
+    return $url;
+});
 
 
 // Registering the view component
-$di->set('view', function(){
+$di->setShared('view', function(){
     $view = new \Phalcon\Mvc\View();
     $view->setViewsDir(APP_PATH.'/backend/views/');
     $view->setLayoutsDir(BASE_PATH. '/public/theme/layouts/');
@@ -35,6 +43,7 @@ $di->set('view', function(){
     $event->attach('view:notFoundView', function(\Phalcon\Events\EventInterface $event, \Phalcon\Mvc\ViewInterface $view, $viewEnginePath) {
         new \Lib\Events\NotFoundView($event, $view, $viewEnginePath);
     });
+    $view->setEventsManager($event);
 
     $view->registerEngines(array(
         '.volt' => function($view, $di) {
@@ -54,14 +63,7 @@ $di->set('view', function(){
 });
 
 
-$di->set('url', function() use ($config)
-{
-    $url = new \Phalcon\Mvc\Url();
-    $url->setBaseUri($config->application->baseUri);
-    $url->setStaticBaseUri($config->application->baseUri);
-    $url->setBasePath($config->application->baseUri);
-    return $url;
-});
+
 
 $di->set('tag', function()
 {
@@ -83,7 +85,7 @@ $di->setShared('assetsManager', function()
     return new \Lib\Assets\AssetManager();
 });
 
-$di->set('asset', function()
+$di->set('assetCollection', function()
 {
     return new \Lib\Assets\Collection();
 });
