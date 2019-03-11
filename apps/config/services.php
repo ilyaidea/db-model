@@ -14,7 +14,27 @@ $config = $di->getShared('config');
 $di->set('view', function(){
     $view = new \Phalcon\Mvc\View();
     $view->setViewsDir(APP_PATH.'/backend/views/');
-    $view->setPartialsDir(APP_PATH.'/backend/views/partials/');
+    $view->setLayoutsDir(BASE_PATH. '/public/theme/layouts/');
+    $view->setPartialsDir(BASE_PATH.'/public/theme/partials/');
+    $view->setMainView(BASE_PATH. '/public/theme/theme');
+    $view->setLayout('main');
+
+    $event = new \Phalcon\Events\Manager();
+    $event->attach('view:beforeRender', function(\Phalcon\Events\EventInterface $event, \Phalcon\Mvc\ViewInterface $view, $viewEnginePath) {
+        new \Lib\Events\BeforeRender($event, $view, $viewEnginePath);
+    });
+    $event->attach('view:afterRender', function(\Phalcon\Events\EventInterface $event, \Phalcon\Mvc\ViewInterface $view) {
+        new \Lib\Events\AfterRender($event, $view);
+    });
+    $event->attach('view:afterRenderView', function(\Phalcon\Events\EventInterface $event, \Phalcon\Mvc\ViewInterface $view) {
+        new \Lib\Events\AfterRenderView($event, $view);
+    });
+    $event->attach('view:beforeRenderView', function(\Phalcon\Events\EventInterface $event, \Phalcon\Mvc\ViewInterface $view, $viewEnginePath) {
+        new \Lib\Events\BeforeRenderView($event, $view, $viewEnginePath);
+    });
+    $event->attach('view:notFoundView', function(\Phalcon\Events\EventInterface $event, \Phalcon\Mvc\ViewInterface $view, $viewEnginePath) {
+        new \Lib\Events\NotFoundView($event, $view, $viewEnginePath);
+    });
 
     $view->registerEngines(array(
         '.volt' => function($view, $di) {
@@ -34,9 +54,43 @@ $di->set('view', function(){
 });
 
 
+$di->set('url', function() use ($config)
+{
+    $url = new \Phalcon\Mvc\Url();
+    $url->setBaseUri($config->application->baseUri);
+    $url->setStaticBaseUri($config->application->baseUri);
+    $url->setBasePath($config->application->baseUri);
+    return $url;
+});
+
 $di->set('tag', function()
 {
     return new Phalcon\Tag();
+});
+
+$di->setShared('jsmin', function()
+{
+    return new \Lib\Assets\Minify\JS();
+});
+
+$di->setShared('cssmin', function()
+{
+    return new \Lib\Assets\Minify\CSS();
+});
+
+$di->setShared('assetsManager', function()
+{
+    return new \Lib\Assets\AssetManager();
+});
+
+$di->set('asset', function()
+{
+    return new \Lib\Assets\Collection();
+});
+
+$di->set('assets', function()
+{
+    return new \Lib\Assets\Manager();
 });
 
 $di->set('db', function ()use ($config) {

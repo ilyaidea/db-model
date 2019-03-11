@@ -1,0 +1,131 @@
+/*
+all px
+0-600: phone
+600-900: tab portrait
+900-1200: tab landscape
+1200-1800: normal
+1800 +: big desk
+*/
+/*
+$beeakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px
+
+ORDER: Base +typographu> general layout + rdid > page layout > component;
+
+*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: black;
+  font-weight: 300; }
+
+.ilya-container {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(0,min-content))  ;
+  grid-template-columns:[full-start] minmax(6rem,1fr) [center-start] repeat(8,[col-start] minmax(min-content, 14rem) [col-end])[center-end] minmax(6rem,1fr) [full-end];
+  grid-row-gap: 5px;
+
+}
+
+.header {
+
+  grid-column: center-start/center-end;
+  display:grid;
+
+  grid-template-rows: repeat(auto-fit, minmax(0,min-content))  ;
+  grid-template-columns:[start] repeat(12,[col-start] minmax(0, 8.333%) [col-end])[end];
+}
+
+
+.bottom {
+  grid-column: center-start/center-end;
+  display:grid;
+
+  grid-template-rows: repeat(auto-fit, minmax(0,min-content))  ;
+  grid-template-columns:[start] repeat(12,[col-start] minmax(0, 8.333%) [col-end])[end];
+}
+
+
+.footer {
+  grid-column: center-start/center-end;
+  display:grid;
+
+  grid-template-rows: repeat(auto-fit, minmax(0,min-content))  ;
+  grid-template-columns:[start] repeat(12,[col-start] minmax(0, 8.333%) [col-end])[end];
+}
+
+.all-main {
+  padding: 0;
+  margin: 0;
+  grid-column: center-start/center-end;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: min-content 1fr min-content;
+
+  /* grid-column-gap: 1rem; */
+}
+
+
+.main{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr min-content;
+
+}
+
+.main__content{
+  grid-row: 2/3;
+}
+
+.main__top{
+  grid-row: 1/2;
+  display:grid;
+  grid-template-rows: repeat(auto-fit, minmax(0,min-content))  ;
+  grid-template-columns:[start] repeat(12,[col-start] minmax(0, 8.333%) [col-end])[end];
+}
+.main__bottom{
+  grid-row: 3/4;
+  display:grid;
+  grid-template-rows: repeat(auto-fit, minmax(0,min-content))  ;
+  grid-template-columns:[start] repeat(12,[col-start] minmax(0, 8.333%) [col-end])[end];
+}
+
+.sidebar-main {
+  max-width: 250px;
+}
+
+.sidebar-aid {
+  max-width: 250px;
+}
+
+
+
+.sidebar__content{
+  width: 250px;
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(0,min-content))  ;
+  grid-template-columns:[start] repeat(12,[col-start] minmax(0, 8.333%) [col-end])[end];
+}
+
+.dir-left {
+  direction: ltr;
+}
+
+.dir-right {
+  direction: rtl;
+}
