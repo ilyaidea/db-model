@@ -6,7 +6,7 @@ ER/
 
 *.xml
 
-/vendor/
+/vendor/*
 
 composer*
 !composer.json
