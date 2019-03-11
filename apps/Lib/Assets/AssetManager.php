@@ -35,7 +35,7 @@ class AssetManager extends Component
 //        }
 
         /** @var Resource $resource */
-        foreach($this->assetCollection->getResources() as $resource)
+        foreach($this->assetsCollection->getResources() as $resource)
         {
             if($resource->getType() == 'css' && $resource->getLocal() && file_exists($resource->getPath()))
             {
@@ -48,7 +48,7 @@ class AssetManager extends Component
         }
 
         /** @var Inline $code */
-        foreach($this->assetCollection->getCodes() as $code)
+        foreach($this->assetsCollection->getCodes() as $code)
         {
             if($code->getType() == 'css')
             {
@@ -68,7 +68,7 @@ class AssetManager extends Component
     private function addRemoteAssets()
     {
         /** @var Resource $resource */
-        foreach($this->assetCollection->getResources() as $resource)
+        foreach($this->assetsCollection->getResources() as $resource)
         {
             if($resource->getType() == 'css' && !$resource->getLocal())
             {

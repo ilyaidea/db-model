@@ -37,10 +37,10 @@ class PagesController extends Controller
 //            echo 'saved';
 //
 //        }
-//        $this->assetCollection->addInlineCss('body{background : red}');
+//        $this->assetsCollection->addInlineCss('body{background : red}');
 
 //        $this->view->collor = 'blue';
-//        $this->view->assetCollection = $this->assetCollection;
+//        $this->view->assetsCollection = $this->assetCollection;
     }
     public function updateAction()
     {

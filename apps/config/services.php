@@ -85,7 +85,7 @@ $di->setShared('assetsManager', function()
     return new \Lib\Assets\AssetManager();
 });
 
-$di->set('assetCollection', function()
+$di->set('assetsCollection', function()
 {
     return new \Lib\Assets\Collection();
 });
