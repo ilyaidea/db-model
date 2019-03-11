@@ -47,17 +47,18 @@ class Module implements ModuleDefinitionInterface
             }
         );
 
-        // Registering the view component
-        $di->set(
-            'view',
-            function () {
-                $view = new View();
+        $view = $di->get('view');
 
-                $view->setViewsDir(__DIR__.'/views/');
+        $di->setShared('view',$this->setView($di));
 
-                return $view;
-            }
-        );
+    }
+    private function setView($di)
+    {
+        $view = $di->getShared('view');
+
+        $view->setViewsDir(__DIR__.'/views/');
+
+        return $view;
     }
 }
 

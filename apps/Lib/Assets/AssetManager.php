@@ -34,8 +34,9 @@ class AssetManager extends Component
 //            $this->jsmin->add('assets/jquery/dist/jquery.min.js');
 //        }
 
+        dump($this->assetCollection->getCodes());
         /** @var Resource $resource */
-        foreach($this->asset->getResources() as $resource)
+        foreach($this->assetCollection->getResources() as $resource)
         {
             if($resource->getType() == 'css' && $resource->getLocal() && file_exists($resource->getPath()))
             {
@@ -48,7 +49,7 @@ class AssetManager extends Component
         }
 
         /** @var Inline $code */
-        foreach($this->asset->getCodes() as $code)
+        foreach($this->assetCollection->getCodes() as $code)
         {
             if($code->getType() == 'css')
             {
@@ -68,7 +69,7 @@ class AssetManager extends Component
     private function addRemoteAssets()
     {
         /** @var Resource $resource */
-        foreach($this->asset->getResources() as $resource)
+        foreach($this->assetCollection->getResources() as $resource)
         {
             if($resource->getType() == 'css' && !$resource->getLocal())
             {

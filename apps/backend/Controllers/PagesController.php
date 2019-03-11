@@ -13,28 +13,33 @@ class PagesController extends Controller
     public function addAction()
     {
 
-        $page = new ModelPages();
+//        $page = new ModelPages();
+//
+//        $page->setLanguageIso('en');
+//
+//        $page->setTitle('title1_1');
+//
+//        $page->setParentId(1);
+//
+//        $page->setTitleMenu('title menu_1');
+//
+//       // $page->setPosition(1);
+//
+//        $page->setSlug('/test');
+//
+//        if (!$page->save())
+//        {
+//            print_r($page->getMessages());
+//        }
+//        else
+//        {
+//            $page->sortByPosition();
+//            echo 'saved';
+//
+//        }
+        $this->assetCollection->addInlineCss('body{background : red}');
 
-        $page->setLanguageIso('en');
-        $page->setTitle('title2');
-        $page->setTitleMenu('title menu_1');
-        $page->setParentId(1);
-       // $page->setPosition(1);
-        $page->setSlug('/test');
-
-        if (!$page->save())
-        {
-            die(print_r($page->getMessages()));
-        }
-        else
-        {
-            $page->sortByPosition();
-            echo 'saved';
-
-        }
-
-        die;
-
+        $this->view->collor = 'blue';
     }
     public function updateAction()
     {
