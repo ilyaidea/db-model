@@ -123,12 +123,13 @@ trait TModelPagesValidation
                 'title',
                 new MyUniqueness(
                     [
-                        'message'         => '',
+                        'message'         => 'the title is duplicate',
                         'exclusionDomain' => [ 'home', 'page' ],
                         'model'           => $this,
                         'parentCheck'     => true,
                         'languageCheck'   => true,
-                        'cancelOnFail'    => true
+                        'cancelOnFail'    => true,
+                        'code' => 1,
                     ]
                 )
             );

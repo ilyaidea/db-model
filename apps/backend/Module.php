@@ -1,102 +1,63 @@
 <?php
-
 namespace Backend;
 
-use Ad\Backend\Lib\Tag;
-use Phalcon\Db\Adapter\Pdo\Mysql;
-use Phalcon\Loader;
-use Phalcon\Mvc\View;
-use Phalcon\Mvc\Dispatcher;
-use Phalcon\DiInterface;
 use Phalcon\Mvc\ModuleDefinitionInterface;
-use Phalcon\Mvc\View\Engine\Volt ;
+use Phalcon\DiInterface;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Mvc\View;
 
 class Module implements ModuleDefinitionInterface
 {
+
     /**
-     * Registers the module auto-loader
+     * Registers an autoloader related to the module
      *
-     * @param DiInterface $di
+     * @param \Phalcon\DiInterface $dependencyInjector
      */
-    public function registerAutoloaders(DiInterface $di = null)
+    public function registerAutoloaders(DiInterface $dependencyInjector = null)
     {
-        $loader = new Loader();
+        $loader = new \Phalcon\Loader();
+
         $loader->registerNamespaces(
             [
-                'Backend\Controllers' => __DIR__.'/controllers/',
-                'Backend\Models'      => __DIR__.'/models/',
-                'Backend\Plugins'     => __DIR__.'/plugins/',
-                'Backend\Forms'     => __DIR__.'/forms/',
-                'Backend\Lib'     => __DIR__.'/lib/',
+                'Backend\Controllers' => __DIR__ . '/controllers/',
+                'Backend\Models' => __DIR__ . '/models/',
             ]
         );
+
         $loader->register();
     }
 
     /**
      * Registers services related to the module
      *
-     * @param DiInterface $di
+     * @param \Phalcon\DiInterface $di
      */
     public function registerServices(DiInterface $di)
     {
         // Registering a dispatcher
-        $di->set('dispatcher', function () {
-            $dispatcher = new Dispatcher();
-            $dispatcher->setDefaultNamespace('Backend\Controllers\\');
-            return $dispatcher;
-        });
+        $di->set(
+            'dispatcher',
+            function () {
+                $dispatcher = new Dispatcher();
+
+                $dispatcher->setDefaultNamespace('Backend\Controllers\\');
+
+                return $dispatcher;
+            }
+        );
 
         // Registering the view component
-        $di->set('view', function(){
-            $view = new View();
-            $view->setViewsDir(__DIR__.'/views/');
-            $view->setPartialsDir(__DIR__.'/views/partials/');
+        $di->set(
+            'view',
+            function () {
+                $view = new View();
 
-            $view->registerEngines(array(
-                '.volt' => function($view, $di) {
-                    $volt = new Volt($view, $di);
+                $view->setViewsDir(__DIR__.'/views/');
 
-                    $volt->setOptions(array(
-                        'compiledPath' => dirname(__DIR__).'/data/volt/',
-                        'stat' => true,
-                        'compileAlways' => true
-                    ));
-
-                    $compiler = $volt->getCompiler();
-
-                    $compiler->addFunction('get_class', 'get_class');
-                    $compiler->addFunction('strrpos', 'strrpos');
-                    $compiler->addFunction('substr', 'substr');
-                    $compiler->addFunction('array_push', 'array_push');
-
-                    return $volt;
-                }
-            ));
-
-            return $view;
-        });
-        $di->set('tag', function()
-        {
-            return new Tag();
-        });
-
-        // Set a different connection in each module
-        date_default_timezone_set('Asia/Tehran');
-        $di->set('db', function () {
-            $tz = 'Asia/Tehran';
-            $charset = 'utf8mb4';
-            return new Mysql(
-                [
-                    "host" => "localhost",
-                    "username" => "root",
-                    "password" => "",
-                    "dbname" => "db-model",
-                    'charset'  => 'utf8mb4',
-                    'prefix'   => 'ilya_',
-
-                ]
-            );
-        });
+                return $view;
+            }
+        );
     }
 }
+
