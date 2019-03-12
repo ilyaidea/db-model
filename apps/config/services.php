@@ -75,6 +75,11 @@ $di->setShared('jsmin', function()
     return new \Lib\Assets\Minify\JS();
 });
 
+$di->setShared('device', function()
+{
+    return new \Lib\Common\MobileDetect();
+});
+
 $di->setShared('cssmin', function()
 {
     return new \Lib\Assets\Minify\CSS();
