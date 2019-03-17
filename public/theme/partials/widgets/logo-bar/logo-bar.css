@@ -1,0 +1,49 @@
+.logo-bar {
+    grid-column: start/end;
+    display: grid;
+    grid-template-columns: minmax(max-content, 1fr) 3fr minmax(max-content, 1fr);
+    grid-template-rows: min-content;
+    grid-column-gap: 2rem;
+    justify-content: start;
+    height: 100%; }
+.logo-bar__img {
+    max-height: 4rem;
+    justify-self: start;
+    align-self: center; }
+.logo-bar__search {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 10fr min-content;
+    justify-self: center;
+    align-self: center;
+    font-family: none; }
+.logo-bar__search-input {
+    justify-self: center;
+    width: 100%;
+    border-radius: 0 5px  5px 0;
+    border: 1px solid #28b485;
+    border-left: none;
+    margin-right: 0;
+    padding: 0 10px;
+    font-size: 1.8rem;
+    font-family: 'yekan'; }
+.logo-bar__search-input::placeholder {
+    opacity: .9;
+    color: #58585a; }
+.logo-bar__search-icon {
+    color: #fff;
+    border: 1px solid #28b485;
+    background-color: #58585a;
+    padding: 5px 10px;
+    border-radius: 5px 0 0 5px;
+    transition: all 0.1s; }
+.logo-bar__search-icon:hover {
+    transform: translateX(3px);
+    background-color: #f5a956; }
+.logo-bar__login {
+    justify-self: end;
+    align-self: center;
+    font-family: yekan;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: #eee; }

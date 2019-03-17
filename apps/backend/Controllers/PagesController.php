@@ -5,42 +5,48 @@ namespace Backend\Controllers;
 
 use Lib\Mvc\Model\PageCategory\ModelPageCategory;
 use Lib\Mvc\Model\Pages\ModelPages;
+use Lib\Mvc\View;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Model;
 
-class PagesController extends Controller
+/**
+ * Class PagesController
+ * @package Backend\Controllers
+ * @property \Lib\Assets\Collection $assetsCollection
+ */
+class PagesController extends \Lib\Mvc\Controller\Controller
 {
     public function addAction()
     {
+        $page = new ModelPages();
 
-//        $page = new ModelPages();
-//
-//        $page->setLanguageIso('en');
-//
-//        $page->setTitle('title1_1');
-//
-//        $page->setParentId(1);
-//
-//        $page->setTitleMenu('title menu_1');
-//
-//       // $page->setPosition(1);
-//
-//        $page->setSlug('/test');
-//
-//        if (!$page->save())
-//        {
-//            print_r($page->getMessages());
-//        }
-//        else
-//        {
-//            $page->sortByPosition();
-//            echo 'saved';
-//
-//        }
+        $page->setLanguageIso('en');
+
+        $page->setTitle('title1_1');
+
+        $page->setParentId(1);
+
+        $page->setTitleMenu('title menu_1');
+
+       // $page->setPosition(1);
+
+        $page->setSlug('/test');
+
+        if (!$page->save())
+        {
+            print_r($page->getMessages());
+        }
+        else
+        {
+            $page->sortByPosition();
+            echo 'saved';
+
+        }
 //        $this->assetsCollection->addInlineCss('body{background : red}');
-
-//        $this->view->collor = 'blue';
-//        $this->view->assetsCollection = $this->assetCollection;
+//
+//        $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
+//        $this->view->color = 'blue';
+//        $this->view->assetsCollection = $this->assetsCollection;
     }
     public function updateAction()
     {

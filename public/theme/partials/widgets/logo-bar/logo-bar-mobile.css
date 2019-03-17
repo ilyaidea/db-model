@@ -1,0 +1,80 @@
+.logo-bar-mobile {
+    display: none; }
+@media only screen and (max-width: 30em) {
+    .logo-bar-mobile {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) max-content;
+        grid-template-rows: min-content;
+        grid-column-gap: 1rem;
+        justify-content: start;
+        height: 100%;
+        grid-row: 2/3;
+        grid-column: start/end; } }
+.logo-bar-mobile__img {
+    display: none;
+    grid-row: 1/2;
+    grid-column: 7/end;
+    max-height: 3rem;
+    height: 100%;
+    justify-self: end;
+    align-self: center; }
+@media only screen and (max-width: 30em) {
+    .logo-bar-mobile__img {
+        display: inline-block; } }
+.logo-bar-mobile__search {
+    direction: ltr;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    justify-self: center;
+    align-self: center;
+    font-family: none; }
+.logo-bar-mobile__search__line {
+    float: left;
+    height: 100%;
+    border-bottom: 1px solid #28b485;
+    border-top: 1px solid #28b485;
+    text-decoration: none;
+    background-color: white;
+    color: #58585a; }
+.logo-bar-mobile__search-input {
+    min-width: 50px;
+    justify-self: center;
+    width: 100%;
+    border-radius: 5px 0  0 5px;
+    border: 1px solid #28b485;
+    border-right: none;
+    margin-right: 0;
+    padding: 0 10px;
+    font-size: 1.8rem;
+    font-family: 'yekan'; }
+.logo-bar-mobile__search-input::placeholder {
+    opacity: .9;
+    color: #58585a; }
+.logo-bar-mobile__search-icon {
+    color: #28b485;
+    border: 1px solid #28b485;
+    background-color: white;
+    padding: 5px 5px;
+    border-radius: 0 5px  5px 0; }
+.logo-bar-mobile__login {
+    margin-left: 1rem;
+    display: grid;
+    grid-template-columns: min-content min-content;
+    grid-column-gap: .5rem;
+    justify-self: center;
+    align-self: center; }
+.logo-bar-mobile__login a {
+    font-size: 1.8rem;
+    font-weight: 200;
+    color: #eee;
+    display: block;
+    padding: 0.5rem 0.8rem; }
+.logo-bar-mobile__login-primary {
+    background-color: #28b485; }
+.logo-bar-mobile__login-secondary {
+    background-color: #f5a956; }
+.logo-bar-mobile__login--border-right {
+    border-radius: 0 1.5rem 1.5rem 0; }
+.logo-bar-mobile__login--border-left {
+    border-radius: 1.5rem  0 0  1.5rem; }

@@ -1,39 +1,24 @@
-{# body() #}
-<body class="ilya-container">
-    <header class="header">
-        {{ partial('widgets/check-and-show', ['place': 'header']) }}
-    </header>
+{#<body class="ilya-container">#}
+            {#<div class="main__content">#}
+                {#{{ partial('body/content') }}#}
+            {#</div>#}
 
-    <section class="all-main">
-        <section class="sidebar-main">
-            {{ partial('widgets/check-and-show', ['place': 'side_main']) }}
-        </section>
+    {#{{ partial('body/script') }}#}
+{#</body>#}
+{#{{ assetsCollection.addCss('theme/partials/components/header/header.css') }}#}
+{#{{ assetsCollection.addCss('theme/partials/components/header/all.min.css') }}#}
+{#{{ assetsCollection.addJs('theme/partials/components/header/header.js') }}#}
 
-        <section class="main">
-            <div class="main__top">
-                {{ partial('widgets/check-and-show', ['place': 'main_top']) }}
-            </div>
-            <div class="main__content">
-                {{ partial('body/content') }}
-            </div>
-            <div class="main__bottom">
-                {{ partial('widgets/check-and-show', ['place': 'main_bottom']) }}
-            </div>
-        </section>
+<body>
+<div id="mute" class="none" onclick="menuColClose()"></div>
 
-        <section class="sidebar-aid">
-            {{ partial('widgets/check-and-show', ['place': 'side_aid']) }}
-        </section>
-    </section>
+<div class="container" id="main-wrapper">
 
+    {{ partial('body/content') }}
 
-    <section class="bottom">
-        {{ partial('widgets/check-and-show', ['place': 'bottom']) }}
-    </section>
+</div>
 
-    <footer class="footer">
-        {{ partial('widgets/check-and-show', ['place': 'footer']) }}
-    </footer>
+{{ partial('body/script') }}
 
-    {{ partial('body/script') }}
 </body>
+

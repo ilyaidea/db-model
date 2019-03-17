@@ -1,0 +1,118 @@
+
+// 
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
+
+$color-tertiary-light: #2998ff ;
+$color-tertiary-dark: #5643fa;
+$color-primary-3: #0000cd;
+
+
+
+$color-primary-light : #7ed56f;
+$color-primary-2-dark: #28b485;
+
+$color-primary-3: #4169e1;
+
+
+// COLOR VARIABLES
+
+$color-primary-2: #4169e1;
+$color-primary-2-light: #2998ff;
+$color-primary-dark: #5643fa;
+
+$color-brown : #c69963;
+$color-brown-dark: #b28451;
+
+
+
+
+$color-primary: #55c57a;
+$color-secondary: #101d2c;
+$color-tertiary:rgb(255,181,30);
+
+
+$color-tertiary:#FF851B ;
+
+
+
+
+$color-secondary: #15273bc2;
+
+
+$color-grey-light-1: #f9f7f1;
+$color-grey-light-2: #aaa;
+$color-grey-light-3: #eee;
+
+$color-grey-dark: #777;
+$color-grey-dark-2: #999;
+$color-grey-dark-3: #333;
+$color-grey-dark-4: #54483a;
+$color-grey-dark-5: #6d5d4b;
+
+$color-white : #fff;
+$color-black: #000;
+
+
+$color-grey-dark-7: #58585a;
+
+$color-orange: #f5a956;
+
+
+
+// $color-primary: $color-grey-dark-2;
+
+$color-primary: $color-primary-2-dark;
+
+$color-secondary:$color-grey-dark-7;
+$color-tertiary: $color-orange;
+
+// $color-tertiary:rgba(241, 127, 27, 0.705) ;
+
+// FONT VARIABLES
+// $font-primary: 'Roboto', sans-serif;
+$font-display: 'Josefin Sans', sans-serif;
+$default-font-size: 1.6rem;
+$font-primary: 'yekan';
+
+@font-face {
+    font-family: 'yekan';
+    src: url(../webfonts/Yekan.eot),
+         url(../webfonts/Yekan.woff),
+         url(../webfonts/Yekan.ttf);  
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('../webfonts/icomoon.eot');
+	src:url('../webfonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		  url('../webfonts/icomoon.woff') format('woff'),
+	   	url('../webfonts/icomoon.ttf') format('truetype'),
+	  	url('../webfonts/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
+$box-shadow-1 : 0 1.5rem 4rem rgba($color-black , .15);
+
+
+
+
+// variable for media queries
+
+$bp-largest: 75em; // 1200px
+
+
+$bp-large: 56.25em; //900px
+
+
+$bp-medium:48em;// 768px
+
+
+
+$bp-tablet-large:62.5em; // 1000 px stands for 990 * 1440
+$bp-tablet-default: 50em; // 800 px stands for 768 * 1024
+
+$bp-mobile:30em; // 480 px stands for 480 * 640

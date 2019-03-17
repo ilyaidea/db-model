@@ -12,3 +12,9 @@ composer*
 !composer.json
 
 composer\.lock
+
+node_modules/
+node_modules/*
+
+assets/
+assets/*

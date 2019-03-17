@@ -7,6 +7,5 @@
 
     {{ partial('head') }}
     {{ partial('body') }}
-
     {{ attribution }}
 </html>
