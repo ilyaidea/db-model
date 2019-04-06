@@ -123,7 +123,7 @@ trait TModelPagesValidation
                 'title',
                 new MyUniqueness(
                     [
-                        'message'         => 'the title is duplicate',
+                        'message'         => 'the title is duplicated',
                         'exclusionDomain' => [ 'home', 'page' ],
                         'model'           => $this,
                         'parentCheck'     => true,

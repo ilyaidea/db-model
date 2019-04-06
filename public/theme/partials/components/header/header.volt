@@ -1,4 +1,36 @@
 {{ assetsCollection.addJs('theme/partials/components/header/header.js') }}
+{%- macro make_navbar(array) %}
+    {% set out ='' %}
+    {% for nav in array %}
+
+        {% set out =out ~ '<li id="'~nav['item_id']~'" class="'~nav['item_class']~'">' %}
+
+        {% set out = out ~ nav['title'] %}
+
+        {% if nav['type'] == 'link' %}
+            {% set out = out ~ '<a href= "#" onclick="setIdforShowMenu(navbar-1row-t1_1_ {{ id }} )" class="' ~nav['item_class']~ '" >' ~nav['title']~ '</a>' %}
+
+        {% endif %}
+
+        {% if nav['children'] is type('array')  and nav['children'] is not empty %}
+            <div >
+                <div>
+                    <ul class="navbar-1row-t1__item-main-drop--grid--ul">
+                        {{ make_navbar(nav['children']) }}
+                        <a href="">{{ nav['title']}}</a>
+                    </ul>
+                    {#{% set out = out ~'<ul class="navbar-1row-t1__item-main-drop--grid--ul">' ~ make_navbar(nav['children']) ~ '</ul>' %}#}
+                    {#<a href="">{{ nav['title']}}</a>#}
+                </div>
+            </div>
+
+        {% endif %}
+
+        {% set out = out ~ '</li>' %}
+    {% endfor %}
+
+    {% return out %}
+{%- endmacro %}
 
 <header class="header">
 

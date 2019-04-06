@@ -1,6 +1,7 @@
 {{ assetsCollection.addCss('theme/partials/widgets/nav-bar/nav-bar.css') }}
 {{ assetsCollection.addJs('theme/partials/widgets/nav-bar/nav-bar.js') }}
 
+
 <div class="navbar-base bp-min-tablet-default" >
     <div class="navbar-1row-t1__main">
         <ul class="navbar-1row-t1">
@@ -85,6 +86,17 @@
         </ul>
 
     </div>
+
+
+
+
+
+    <div class="navbar-1row-t1__main">
+        <ul class="navbar-1row-t1">
+        {{ make_navbar(navbars) }}
+        </ul>
+
+    </div>
     <div class="navbar-1row-t1__sub">
         <ul class="navbar-1row-t1">
             <li class="navbar-1row-t1__item-sub">
@@ -95,6 +107,5 @@
             </li>
         </ul>
     </div>
+
 </div>
-
-

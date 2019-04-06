@@ -9,13 +9,18 @@
 namespace Backend\Controllers;
 
 
+use Lib\Common\Arrays;
 use Lib\Mvc\Controller\Controller;
+use Lib\Mvc\Model\Navbar\ModelNavbar;
 
 class IndexController extends Controller
 {
     public function indexAction()
     {
-
+        /** @var ModelNavbar $a */
+        $navbars = ModelNavbar::find();
+        $navArray = Arrays::tree($navbars->toArray()) ;
+        $this->view->navbars = $navArray;
     }
 
 }

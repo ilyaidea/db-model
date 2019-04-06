@@ -34,7 +34,7 @@ class PagesController extends \Lib\Mvc\Controller\Controller
 
         if (!$page->save())
         {
-            print_r($page->getMessages());
+            dump($page->getMessages());
         }
         else
         {

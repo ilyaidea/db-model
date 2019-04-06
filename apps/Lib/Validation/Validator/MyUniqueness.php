@@ -177,16 +177,16 @@ class MyUniqueness extends Validator
     /**
      * compare value of inputted title with parent's title in the model.with same language
      * return false if they are equal.
-     * @param ValidationInterface $validation
+     * @param Validation $validation
      * @param string $field
      * @return bool
      */
     public function checkNameNotEqualsParentName(Validation $validation, $field)
     {
-        $parentId = null;
+        $parent = null;
         $language = null;
 
-        if (!$this->parentCheck())
+        if ($this->parentCheck && !method_exists($this->model, $this->createMethodName($this->parentField)))
         {
             $this->setErrorMessage(
                 $validation,
@@ -196,12 +196,10 @@ class MyUniqueness extends Validator
             return false;
         }
 
-        $parentId = $this->model->{$this->createMethodName($this->parentField)}();
+        if ($this->parentCheck())
+             $parent = $this->model->{$this->createMethodName($this->parentField)}();
 
-        if(!$parentId)
-            return true;
-
-        if (!$this->languageCheck())
+        if ($this->languageCheck && !method_exists($this->model, $this->createMethodName($this->languageField)))
         {
             $this->setErrorMessage(
                 $validation,
@@ -211,7 +209,8 @@ class MyUniqueness extends Validator
             return false;
         }
 
-        $language = $this->model->{$this->createMethodName($this->languageField)}();
+        if ($this->languageCheck())
+            $language = $this->model->{$this->createMethodName($this->languageField)}();
 
         if (!$language)
         {
@@ -223,7 +222,7 @@ class MyUniqueness extends Validator
             return false;
         }
 
-        if ($this->checkParentName($validation,$field,$parentId,$language))
+        if ($this->checkParentName($validation,$field,$parent,$language))
         {
             $this->setErrorMessage(
                 $validation,
