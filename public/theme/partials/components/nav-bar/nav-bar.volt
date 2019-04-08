@@ -98,11 +98,11 @@
         <ul class="navbar-1row-t1">
 
             <li class="navbar-1row-t1__item-sub">
-                {{ partial('components/button/button', ['class' : '"navbar-1row-t1__item-sub"', 'label1' : 'درباره ما','href': '#']) }}
+                {{ partial('components/button/button', ['class' : 'navbar-1row-t1__item-sub', 'label1' : 'درباره ما','href': '#']) }}
 
             </li>
             <li class="navbar-1row-t1__item-sub">
-                {{ partial('components/button/button', ['class' : '"navbar-1row-t1__item-sub"', 'label1' : 'تماس با ما','href': '#']) }}
+                {{ partial('components/button/button', ['class' : 'navbar-1row-t1__item-sub', 'label1' : 'تماس با ما','href': '#']) }}
 
             </li>
         </ul>

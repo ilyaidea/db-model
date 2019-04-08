@@ -11,12 +11,13 @@ trait TModelNavbarProperties
     private $title;
     private $display;
     private $icon;
-    private $picture;
     private $type;
     private $url;
     private $target;
     private $position;
     private $description;
+    private $item_class;
+    private $item_id;
     private $created;
     private $modified;
 
@@ -106,22 +107,6 @@ trait TModelNavbarProperties
     public function setIcon($icon)
     {
         $this->icon = $icon;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPicture()
-    {
-        return $this->picture;
-    }
-
-    /**
-     * @param mixed $picture
-     */
-    public function setPicture($picture)
-    {
-        $this->picture = $picture;
     }
 
     /**
@@ -234,6 +219,38 @@ trait TModelNavbarProperties
     public function setModified($modified)
     {
         $this->modified = $modified;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItemClass()
+    {
+        return $this->item_class;
+    }
+
+    /**
+     * @param mixed $item_class
+     */
+    public function setItemClass($item_class)
+    {
+        $this->item_class = $item_class;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItemId()
+    {
+        return $this->item_id;
+    }
+
+    /**
+     * @param mixed $item_id
+     */
+    public function setItemId($item_id)
+    {
+        $this->item_id = $item_id;
     }
 
 

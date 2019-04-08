@@ -2,6 +2,7 @@
 
 namespace Lib\Mvc\Model\Language;
 
+use Lib\Mvc\Model\Navbar\ModelNavbar;
 use Lib\Mvc\Model\Pages\ModelPages;
 use Lib\Mvc\Model\Translate\ModelTranslate;
 
@@ -12,6 +13,8 @@ use Lib\Mvc\Model\Translate\ModelTranslate;
  * @method ModelTranslate[] getTranslates()
  * @property ModelPages[] $pages
  * @method ModelPages[] getPages()
+ * @property ModelNavbar[] $navbars
+ * @method ModelNavbar[] getNavbar()
  */
 trait TModelLanguageRelations
 {
@@ -44,6 +47,19 @@ trait TModelLanguageRelations
             ]
         );
 
+        $this->hasMany(
+            'iso',
+            ModelNavbar::class,
+            'language_iso',
+            [
+                'alias' => 'Navbars',
+
+                'foreignKey' => [
+                    'allowNulls' => false,
+                    'message' => 'The language cannot be deleted because other tables are using it',
+                ]
+            ]
+        );
 
     }
 
