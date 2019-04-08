@@ -19,8 +19,8 @@
 <!-- ilya styles -->
 
 <link rel="stylesheet" href="{{ static_url('theme/partials/head/com-base.css') }}">
-<link rel="stylesheet" href="{{ static_url('theme/partials/components/header/com-header.css') }}">
-<link rel="stylesheet" href="{{ static_url('theme/partials/widgets/slider/css/slider.css') }}">
+<link rel="stylesheet" href="{{ static_url('theme/partials/widgets/header/com-header.css') }}">
+<link rel="stylesheet" href="{{ static_url('theme/partials/components/slider/css/slider.css') }}">
 
 
 <link rel="shortcut icon" type="image/png" href="{{ static_url('theme/assets/image/logo4.png') }}">

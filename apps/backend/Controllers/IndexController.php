@@ -17,10 +17,21 @@ class IndexController extends Controller
 {
     public function indexAction()
     {
-        /** @var ModelNavbar $a */
-        $navbars = ModelNavbar::find();
+        /** @var ModelNavbar $navbars */
+        $navbars = ModelNavbar::find(
+             [
+                 'conditions'=> 'parent_id IS NULL '
+             ]
+        );
+
         $navArray = Arrays::tree($navbars->toArray()) ;
+
         $this->view->navbars = $navArray;
     }
+    public function testAction()
+    {
+        $this->view->class = '"bbbb"';
+    }
+
 
 }

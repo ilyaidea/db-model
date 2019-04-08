@@ -1,4 +1,4 @@
-{{ assetsCollection.addCss('theme/partials/widgets/slider/css/slider.css') }}
+{{ assetsCollection.addCss('theme/partials/components/slider/css/slider.css') }}
 {#{{ assetsCollection.addCss('theme/partials/components/head/all.min.css') }}#}
 
 <section class="section-slider">

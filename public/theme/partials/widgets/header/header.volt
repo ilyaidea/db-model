@@ -1,32 +1,23 @@
-{{ assetsCollection.addJs('theme/partials/components/header/header.js') }}
+{{ assetsCollection.addJs('theme/partials/widgets/header/header.js') }}
+
 {%- macro make_navbar(array) %}
     {% set out ='' %}
     {% for nav in array %}
 
         {% set out =out ~ '<li id="'~nav['item_id']~'" class="'~nav['item_class']~'">' %}
 
-        {% set out = out ~ nav['title'] %}
-
         {% if nav['type'] == 'link' %}
-            {% set out = out ~ '<a href= "#" onclick="setIdforShowMenu(navbar-1row-t1_1_ {{ id }} )" class="' ~nav['item_class']~ '" >' ~nav['title']~ '</a>' %}
-
+            {% set out = out ~ '<a href= "'~nav['url']~'" >' ~nav['title']~ '</a>' %}
+        {% else %}
+            {% set out = out ~ '<a href= "#">' ~nav['title']~ '</a>' %}
         {% endif %}
 
         {% if nav['children'] is type('array')  and nav['children'] is not empty %}
-            <div >
-                <div>
-                    <ul class="navbar-1row-t1__item-main-drop--grid--ul">
-                        {{ make_navbar(nav['children']) }}
-                        <a href="">{{ nav['title']}}</a>
-                    </ul>
-                    {#{% set out = out ~'<ul class="navbar-1row-t1__item-main-drop--grid--ul">' ~ make_navbar(nav['children']) ~ '</ul>' %}#}
-                    {#<a href="">{{ nav['title']}}</a>#}
-                </div>
-            </div>
-
+            {% set out = out ~'<ul>' ~ make_navbar(nav['children']) ~ '</ul>' %}
         {% endif %}
 
         {% set out = out ~ '</li>' %}
+
     {% endfor %}
 
     {% return out %}
@@ -39,8 +30,8 @@
         <h6>دسته بندی</h6>
     </div>
 
-{{ partial('widgets/logo-bar/logo-bar') }}
-{{ partial('widgets/nav-bar/nav-bar') }}
+{{ partial('components/logo-bar/logo-bar') }}
+{{ partial('components/nav-bar/nav-bar') }}
 
     <div id="nav-collapsed" class="none tran-all navbar-base-collapsed">
 
