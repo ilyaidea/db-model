@@ -1,2 +1,2 @@
 {#{{ partial('widgets/slider/slider') }}#}
-{{ partial('widgets/header/header') }}
+{{ partial('components/header/header') }}

@@ -1,0 +1,73 @@
+@font-face {
+    font-family: 'yekan';
+    src: url(../webfonts/Yekan.eot), url(../webfonts/Yekan.woff), url(../webfonts/Yekan.ttf); }
+
+@font-face {
+    font-family: 'icomoon';
+    src: url("../webfonts/icomoon.eot");
+    src: url("../webfonts/icomoon.eot?#iefix") format("embedded-opentype"), url("../webfonts/icomoon.woff") format("woff"), url("../webfonts/icomoon.ttf") format("truetype"), url("../webfonts/icomoon.svg#icomoon") format("svg");
+    font-weight: normal;
+    font-style: normal; }
+
+.list-tab {
+    color: white;
+    font-size: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    justify-items: center;
+    grid-template-rows: min-content min-content 1fr; }
+.list-tab__header {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    color: #58585a;
+    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    color: white; }
+.list-tab__header--back-color-primary {
+    background-color: #28b485; }
+.list-tab__header--back-color-secondary {
+    background-color: #58585a; }
+.list-tab__header--back-color-tertiary {
+    background-color: #f5a956; }
+.list-tab__btns {
+    font-family: yekan;
+    text-decoration: none;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    color: #b94a48; }
+.list-tab__btns--right {
+    background-color: #f5a956;
+    background-color: #58585a;
+    color: white; }
+.list-tab__btns--left {
+    background-color: #f5a956;
+    background-color: #58585a;
+    color: white; }
+.list-tab__btns--middle {
+    background-color: #f9f7f1;
+    color: black; }
+.list-tab__btns button {
+    padding: .5rem;
+    font-family: yekan;
+    border: none; }
+.list-tab__list {
+    font-size: 1.2rem;
+    padding: .5rem 2rem 1rem 1rem;
+    color: #58585a;
+    align-self: start;
+    justify-self: start;
+    text-decoration: none;
+    list-style: none; }
+.list-tab__list a {
+    text-decoration: none;
+    color: #58585a; }
+.list-tab__list a:hover {
+    color: #28b485; }
+.list-tab__list a i {
+    margin-left: .2rem;
+    transform: translateY(1px); }
+.list-tab__list--box {
+    list-style: none; }
