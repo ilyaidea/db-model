@@ -7,7 +7,7 @@ class ModelPages extends BaseModel
 {
     use TModelPagesProperties;
     use TModelPagesRelations;
-    use TModelPagesValidation;
+    use TModelPagesValidations;
     use TModelPagesEvents;
 
 

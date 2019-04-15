@@ -21,7 +21,7 @@ $di->set('url', function() use ($config)
 // Registering the view component
 $di->setShared('view', function(){
     $view = new \Lib\Mvc\View();
-    $view->setViewsDir(APP_PATH.'/backend/views/');
+//    $view->setViewsDir(APP_PATH.'modules/backend/views/');
     $view->setLayoutsDir(BASE_PATH. '/public/theme/layouts/');
     $view->setPartialsDir(BASE_PATH.'/public/theme/partials/');
     $view->setMainView(BASE_PATH. '/public/theme/theme');

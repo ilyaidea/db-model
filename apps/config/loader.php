@@ -2,14 +2,14 @@
 use Phalcon\Loader;
 
 $loader = new Loader();
-
 $loader->registerNamespaces(
     [
-        'Backend\Controllers' => APP_PATH.'/backend/controllers/',
-        'Backend\Models'      => APP_PATH.'/backend/models/',
-        'Backend\Plugins'     => APP_PATH.'/backend/plugins/',
-        'Backend\Forms'     => APP_PATH.'/backend/forms/',
-        'Backend\Lib'     => APP_PATH.'/backend/lib/',
+        'App' => APP_PATH,
+//        'Modules\Backend\Controllers' => APP_PATH.'/backend/controllers/',
+//        'Modules\Backend\Models'      => APP_PATH.'/backend/models/',
+//        'Modules\Backend\Plugins'     => APP_PATH.'/backend/plugins/',
+//        'Modules\Backend\Forms'     => APP_PATH.'/backend/forms/',
+//        'Modules\Backend\Lib'     => APP_PATH.'/backend/lib/',
         'Lib'            => APP_PATH.'/lib/',
     ]
 )->registerFiles(
