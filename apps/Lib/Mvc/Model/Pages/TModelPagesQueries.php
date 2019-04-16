@@ -7,23 +7,6 @@ use Lib\Mvc\Model\Language\ModelLanguage;
 
 trait TModelPagesQueries
 {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * Get page by slug and local language
      * @param string $slug

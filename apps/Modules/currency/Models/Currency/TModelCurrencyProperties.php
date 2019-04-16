@@ -4,8 +4,12 @@ namespace Modules\Currency\Models\Currency;
 trait TModelCurrencyProperties
 {
     private $id;
+    private $category_id;
     private $title;
+    private $description;
     private $position;
+    private $created;
+    private $modified;
 
     /**
      * @return mixed
@@ -16,11 +20,19 @@ trait TModelCurrencyProperties
     }
 
     /**
-     * @param mixed $id
+     * @return mixed
      */
-    public function setId($id)
+    public function getCategoryId()
     {
-        $this->id = $id;
+        return $this->category_id;
+    }
+
+    /**
+     * @param mixed $category_id
+     */
+    public function setCategoryId($category_id)
+    {
+        $this->category_id = $category_id;
     }
 
     /**
@@ -42,6 +54,22 @@ trait TModelCurrencyProperties
     /**
      * @return mixed
      */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getPosition()
     {
         return $this->position;
@@ -54,5 +82,38 @@ trait TModelCurrencyProperties
     {
         $this->position = $position;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param mixed $created
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getModified()
+    {
+        return $this->modified;
+    }
+
+    /**
+     * @param mixed $modified
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+    }
+
 
 }

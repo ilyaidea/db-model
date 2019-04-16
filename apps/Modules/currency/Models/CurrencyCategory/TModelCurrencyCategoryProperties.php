@@ -8,6 +8,7 @@ trait TModelCurrencyCategoryProperties
     private $parent_id;
     private $title;
     private $description;
+    private $position;
 
     /**
      * @return mixed
@@ -15,14 +16,6 @@ trait TModelCurrencyCategoryProperties
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 
     /**
@@ -72,4 +65,21 @@ trait TModelCurrencyCategoryProperties
     {
         $this->description = $description;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param mixed $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+    }
+
 }

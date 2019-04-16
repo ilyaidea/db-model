@@ -252,16 +252,6 @@ trait TModelPagesValidations
     {
         $this->validator->add(
             'position',
-            new PresenceOf(
-                [
-                    'message'      => 'The :field is required',
-                    'cancelOnFail' => true,
-                    'allowEmpty'   => true
-                ]
-            )
-        );
-        $this->validator->add(
-            'position',
             new Numericality(
                 [
                     'message'      => ':field is not numeric',

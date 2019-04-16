@@ -7,10 +7,10 @@ use Phalcon\Mvc\Model;
 
 class ModelCurrencyPrice extends BaseModel
 {
-    use TraitPropertiesCurrencyPriceModel;
-    use TraitRelationsCurrencyPriceModel;
-    use TraitEventsCurrencyPriceModel;
-    use TraitValidationsCurrencyPriceModel;
+    use TModelCurrencyPriceProperties;
+    use TModelCurrencyPriceRelations;
+    use TModelCurrencyPriceEvents;
+    use TModelCurrencyPriceValidations;
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      * Initialize Method
@@ -18,6 +18,6 @@ class ModelCurrencyPrice extends BaseModel
 
     public function init()
     {
-        $this->setSource('ilya_currency_Price');
+        $this->setSource('ilya_currency_price');
     }
 }

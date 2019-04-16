@@ -1,12 +1,13 @@
 <?php
 namespace Modules\Currency\Models\CurrencyPrice;
 
-trait TraitPropertiesCurrencyPriceModel
+trait TModelCurrencyPriceProperties
 {
     private $id;
     private $currency_id;
     private $price;
-    private $date_time;
+    private $created;
+    private $modified;
 
     /**
      * @return mixed
@@ -14,14 +15,6 @@ trait TraitPropertiesCurrencyPriceModel
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 
     /**
@@ -59,16 +52,33 @@ trait TraitPropertiesCurrencyPriceModel
     /**
      * @return mixed
      */
-    public function getDateTime()
+    public function getCreated()
     {
-        return $this->date_time;
+        return $this->created;
     }
 
     /**
-     * @param mixed $date_time
+     * @param mixed $created
      */
-    public function setDateTime($date_time)
+    public function setCreated($created)
     {
-        $this->date_time = $date_time;
+        $this->created = $created;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getModified()
+    {
+        return $this->modified;
+    }
+
+    /**
+     * @param mixed $modified
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+    }
+
 }

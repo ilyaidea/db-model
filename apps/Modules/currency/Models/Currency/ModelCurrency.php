@@ -11,6 +11,7 @@ class ModelCurrency extends BaseModel
     use TModelCurrencyRelations;
     use TModelCurrencyEvents;
     use TModelCurrencyValidations;
+    use TModelCurrencyQueries;
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      * Initialize Method
