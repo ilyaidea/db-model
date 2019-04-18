@@ -14,16 +14,14 @@ trait TModelCurrencyQueries
     {
         return date("Y-m-d H:i:s", $unix);
     }
+    public function convertUnixToTimestampWithHour($unix,$hour)
+    {
+        return date("Y-m-d ".$hour, $unix);
+    }
 
     public function convertTimestampToUnix($timestamp)
     {
         return strtotime($timestamp);
     }
 
-    public function dateDiff($day)
-    {
-        $startTime = $this->convertUnixToTimestamp($this->getCreated());
-        $endTime   = $startTime->modify('-1 day');
-
-    }
 }

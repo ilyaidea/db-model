@@ -9,10 +9,10 @@ use Modules\Currency\Models\CurrencyPrice\ModelCurrencyPrice;
 /**
  * Trait TModelCurrencyRelations
  * @package Modules\Currency\Models\Currency
- * @property ModelCurrencyPrice[] $price
+ * @property ModelCurrencyPrice[] $prices
  * @method ModelCurrencyPrice[] getPrices()
- * @property ModelCurrencyCategory $category
- * @method ModelCurrencyCategory getCategory()
+ * @property ModelCurrencyCategory $categories
+ * @method ModelCurrencyCategory getCategories()
  */
 trait TModelCurrencyRelations
 {
@@ -24,7 +24,7 @@ trait TModelCurrencyRelations
             ModelCurrencyPrice::class,
             'currency_id',
             [
-                'alias' => 'Price',
+                'alias' => 'Prices',
                 'foreignKey' => [
                     'message' => 'The currency could not be delete because other models are using it'
                 ]
@@ -36,7 +36,7 @@ trait TModelCurrencyRelations
             ModelCurrencyCategory::class,
             'id',
             [
-                'alias' => 'Category',
+                'alias' => 'Categories',
                 'foreignKey' => [
                     'allowNulls' => false,
                     'message' => 'The category_id does not exist in currency_category model'
