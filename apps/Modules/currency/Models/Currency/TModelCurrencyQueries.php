@@ -14,9 +14,11 @@ trait TModelCurrencyQueries
     {
         return date("Y-m-d H:i:s", $unix);
     }
-    public function convertUnixToTimestampWithHour($unix,$hour)
+    public function calculateUnixWithHour($unix,$hour)
     {
-        return date("Y-m-d ".$hour, $unix);
+        $date = date("Y-m-d ".$hour, $unix);
+
+        return $this->convertTimestampToUnix($date);
     }
 
     public function convertTimestampToUnix($timestamp)

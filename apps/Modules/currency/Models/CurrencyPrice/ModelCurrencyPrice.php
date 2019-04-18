@@ -38,7 +38,7 @@ class ModelCurrencyPrice extends BaseModel
      * @param $action string
      * @return bool|int
      */
-    public function calculateUnixTime($param = 0, $type = self::TYPE_DAY, $action = '-')
+    public function calculateUnixTime($param = 0, $type = self::TYPE_DAY, $action = self::ACTION_PAST)
     {
         if (!is_int($param) || $param < 0)
             return false;

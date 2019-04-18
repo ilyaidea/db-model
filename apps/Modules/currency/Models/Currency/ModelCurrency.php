@@ -91,29 +91,83 @@ class ModelCurrency extends BaseModel
 
      * @param int $param
      * @param string $type
-     * @param string $range
+     * @param string $maxOrMin
      * @return false|int
      */
-    public function findMinMaxPrice($param,$type = self::TYPE_DAY,$range = self::ACTION_MAX,$hour)
+    public function findMinMaxPrice($param,$type = self::TYPE_DAY,$maxOrMin = self::ACTION_MAX,$hour)
     {
         if (!is_int($param) || $param < 0)
             return false;
 
         $currencyPrice = new ModelCurrencyPrice();
 
+        // محاسبه یونیکس 5 روز پیش از ساعت کنونی تا الان
         $firstUnixPastTime =$currencyPrice->calculateUnixTime($param,$type);
 
-        $pastTimeWithHour = $this->convertUnixToTimestampWithHour($firstUnixPastTime,$hour);
+        //در تاریخ 5 روز پیش، از ساعتی که بهش داده شده تا الان رو محاسبه میکنه
+        $unixPastTimeWithHour = $this->calculateUnixWithHour($firstUnixPastTime,$hour);
 
-        $unixPastTimeWithHour = $this->convertTimestampToUnix($pastTimeWithHour);
-
-        if ($range == self::ACTION_MAX)
+        if ($maxOrMin == self::ACTION_MAX)
             return $this->getMaxPrice($unixPastTimeWithHour,time());
 
-        else if ($range == self::ACTION_MIN)
+        else if ($maxOrMin == self::ACTION_MIN)
            return $this->getMinPrice($unixPastTimeWithHour,time());
 
         return false;
+    }
+
+    /**
+     * @example
+     * <code>
+     *  $this->findMaxMinWithHour(10,11)
+     * </code>
+     * @param string $startHour
+     * @param string $endHour
+     * @param string $date
+     */
+    public function findMaxPriceOneDayWithHour($startHour,$endHour,$date)
+    {
+
+        $unixStartTimeWithHour = $this->convertTimestampToUnix($date.$startHour);
+
+        $unixEndTimeWithHour = $this->convertTimestampToUnix($date.$endHour);
+
+        //برای هر روز بین ساعت 10 تا 11 بیشترین مقدار قیمت را میدهد
+        $find = $this->getPrices([
+            'conditions' => 'created BETWEEN :start_time: AND :end_time:',
+            'columns' => 'MAX(price) AS max_price',
+            'bind' => [
+                'start_time' => $unixStartTimeWithHour,
+                'end_time' => $unixEndTimeWithHour
+
+            ]
+        ])->toArray();
+dump($find);
+    }
+
+    //findMinMaxPrice(5, self::TYPE_DAY,MAX,'10:00','11:00')
+    //محاسبه ی کمترین بیشترین قیمت در 5 روز پیش در ساعات 10 تا 11
+    public function findMinMaxPriceWithHour($param,$type = self::TYPE_DAY,$startTime,$endTime)
+    {
+        /** @var ModelCurrencyPrice $currencyPrice */
+        $currencyPrices = ModelCurrencyPrice::find()->toArray();
+
+//        dump($currencyPrice);
+        // محاسبه یونیکس 5 روز پیش از ساعت کنونی تا الان
+//        $firstUnixPastTime =$currencyPrice->calculateUnixTime($param,$type);
+
+        //در تاریخ 5 روز پیش، از ساعتی که بهش داده شده تا الان رو محاسبه میکنه
+//        $unixPastTimeWithHour = $this->calculateUnixWithHour($firstUnixPastTime,$startTime);
+
+        $arrayCreated = [];
+        foreach ($currencyPrices as $currencyPrice)
+        {
+            $arrayCreated = $this->convertUnixToTimestamp($currencyPrice['created']);
+//          $this->findMaxPriceOneDayWithHour($startTime,$endTime);
+
+        }
+
+        dump($arrayCreated);
     }
 
 }

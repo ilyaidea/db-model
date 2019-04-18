@@ -18,7 +18,7 @@ class CurrencyController extends Controller
 //        dump($a);
 
 
-////        dump(time());
+//        dump(date('2019-04-18'.mktime(11,30)));
 //        dump( strtotime('today'));
 ////        dump(date('Y-m-d H:i:s',1555459200));
 //
@@ -29,10 +29,13 @@ class CurrencyController extends Controller
 
         /** @var ModelCurrency $curr */
         $curr = ModelCurrency::findFirst(1);
+//        dump($curr->convertTimestampToUnix(date('2019-04-18'.'11:30')));
 //        $b=$curr->convertUnixToTimestampWithHour(1555398725,'15:55:39');
-        dump($curr->convertUnixToTimestamp(1555135239));
+//        dump($curr->convertUnixToTimestamp(1555557000));
 
-        $b = $curr->findMinMaxPrice(5,ModelCurrency::TYPE_DAY,ModelCurrency::ACTION_MIN,'10:30:39');
+        $b = $curr->findMinMaxPriceWithHour(5,ModelCurrency::TYPE_DAY,'10:30:39','11:30:39');
+
+        $b = $curr->findMaxPriceOneDayWithHour('10:00','11:00','2019-04-18');
 
         if (!$b )
             dump('error');
